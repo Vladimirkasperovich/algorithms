@@ -52,3 +52,17 @@ function flatten(arr) {
 }
 
 // console.log(flatten([1, [2, [3, 4]], 5])); // [1, 2, 3, 4, 5]
+
+function myBind(fn, context, ...args1) {
+  // your code
+  return function (...args2) {
+    return fn.apply(context, [...args1, ...args2]);
+  };
+}
+
+function greet(greeting, name) {
+  return `${greeting}, ${name}!`;
+}
+
+// const bound = myBind(greet, null, 'Hello');
+// console.log(bound('John')); // Hello, John!
