@@ -21,3 +21,18 @@ function deepClone(obj) {
 // console.log(copy); // { a: 1, b: { c: 2 } }
 // console.log(copy === source); // false
 // console.log(copy.b === source.b); // false
+
+function debounce(fn, delay) {
+  let timeoutID = null;
+  return () => {
+    clearTimeout(timeoutID);
+    timeoutID = setTimeout(() => {
+      fn();
+    }, delay);
+  };
+}
+
+// const debounced = debounce(() => console.log('Called!'), 1000);
+// console.log(debounced());
+// console.log(debounced());
+// console.log(debounced());
