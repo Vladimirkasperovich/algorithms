@@ -141,3 +141,13 @@ function twoSum(nums, target) {
 // console.log(twoSum([3, 2, 4], 6)); // [1, 2]
 // console.log(twoSum([3, 3], 6)); // [0, 1]
 // console.log(twoSum([1, 2, 3], 7)); // [-1, -1]
+
+function secondLargest(arr) {
+  // твой код
+  const result = [...new Set(arr)].sort((a, b) => b - a);
+  return result.length >= 2 ? result[1] : null;
+}
+
+// console.log(secondLargest([1, 3, 2, 4, 5])); // 4
+// console.log(secondLargest([5, 5, 5])); // undefined или null
+// console.log(secondLargest([10])); // undefined или null
