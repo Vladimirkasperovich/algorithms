@@ -171,3 +171,22 @@ function findDuplicates(arr) {
 // console.log(findDuplicates([1, 2, 3, 2, 4, 5, 1])); // [1,2]
 // console.log(findDuplicates(['a', 'b', 'a', 'c'])); // ['a']
 // console.log(findDuplicates([1, 2, 3])); // []
+
+const quickSort = (arr) => {
+  if (arr.length <= 1) return arr;
+  const pivot = arr[0];
+  const start = [];
+  const end = [];
+
+  for (let i = 1; i < arr.length; i++) {
+    const current = arr[i];
+    if (current < pivot) {
+      start.push(current);
+    } else {
+      end.push(current);
+    }
+  }
+  return [...quickSort(start), pivot, ...quickSort(end)];
+};
+
+// console.log(quickSort([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]));
