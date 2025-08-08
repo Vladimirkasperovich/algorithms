@@ -109,3 +109,16 @@ function isBalancedBrackets(str) {
 // console.log(isBalancedBrackets('(]')); // false
 // console.log(isBalancedBrackets('([)]')); // false
 // console.log(isBalancedBrackets(']')); // false
+
+function uniqueElements(arr) {
+  const map = new Map();
+  for (const item of arr) {
+    if (!map.has(item)) {
+      map.set(item, item);
+    }
+  }
+  return [...map.values()];
+}
+
+// console.log(uniqueElements([1, 2, 2, 3, 4, 4, 5])); // [1, 2, 3, 4, 5]
+// console.log(uniqueElements(['a', 'b', 'a', 'c'])); // ['a', 'b', 'c']
