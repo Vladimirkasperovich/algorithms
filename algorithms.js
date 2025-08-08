@@ -66,3 +66,23 @@ function greet(greeting, name) {
 
 // const bound = myBind(greet, null, 'Hello');
 // console.log(bound('John')); // Hello, John!
+
+function intersect(arr1, arr2) {
+  const map = new Map();
+
+  arr1.forEach((item) => {
+    map.set(item, item);
+  });
+  const result = [];
+
+  arr2.forEach((item) => {
+    if (map.has(item)) {
+      result.push(item);
+      map.delete(item);
+    }
+  });
+
+  return result;
+}
+
+// console.log(intersect([1, 2, 3], [2, 3, 4])); // [2, 3]
