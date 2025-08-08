@@ -1,4 +1,5 @@
 'use strict';
+
 function deepClone(obj) {
   if (obj === null) return obj;
   if (obj && typeof obj === 'object' && Array.isArray(obj)) {
@@ -122,3 +123,21 @@ function uniqueElements(arr) {
 
 // console.log(uniqueElements([1, 2, 2, 3, 4, 4, 5])); // [1, 2, 3, 4, 5]
 // console.log(uniqueElements(['a', 'b', 'a', 'c'])); // ['a', 'b', 'c']
+
+function twoSum(nums, target) {
+  const seen = {};
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    const diff = target - num;
+    if (seen[diff] !== undefined) {
+      return [seen[diff], i];
+    }
+    seen[num] = i;
+  }
+  return [-1, -1];
+}
+
+// console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
+// console.log(twoSum([3, 2, 4], 6)); // [1, 2]
+// console.log(twoSum([3, 3], 6)); // [0, 1]
+// console.log(twoSum([1, 2, 3], 7)); // [-1, -1]
