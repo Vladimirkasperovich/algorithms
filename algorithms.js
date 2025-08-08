@@ -86,3 +86,26 @@ function intersect(arr1, arr2) {
 }
 
 // console.log(intersect([1, 2, 3], [2, 3, 4])); // [2, 3]
+
+function isBalancedBrackets(str) {
+  // твой код
+  const map = { '(': ')', '{': '}', '[': ']' };
+  const stack = [];
+  for (const bracket of str) {
+    if (map[bracket]) {
+      stack.push(bracket);
+    } else {
+      const lastBracket = stack.pop();
+      if (map[lastBracket] !== bracket) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
+}
+
+// console.log(isBalancedBrackets('()[]{}')); // true
+// console.log(isBalancedBrackets('([{}])')); // true
+// console.log(isBalancedBrackets('(]')); // false
+// console.log(isBalancedBrackets('([)]')); // false
+// console.log(isBalancedBrackets(']')); // false
