@@ -151,3 +151,23 @@ function secondLargest(arr) {
 // console.log(secondLargest([1, 3, 2, 4, 5])); // 4
 // console.log(secondLargest([5, 5, 5])); // undefined или null
 // console.log(secondLargest([10])); // undefined или null
+
+function findDuplicates(arr) {
+  const map = {};
+  for (const item of arr) {
+    map[item] = (map[item] || 0) + 1;
+  }
+  const maxValue = Math.max(...Object.values(map));
+  if (maxValue === 1) return [];
+
+  return Object.entries(map)
+    .filter((item) => item[1] === maxValue)
+    .map((item) => {
+      const num = Number(item[0]);
+      return isNaN(num) ? item[0] : num;
+    });
+}
+
+// console.log(findDuplicates([1, 2, 3, 2, 4, 5, 1])); // [1,2]
+// console.log(findDuplicates(['a', 'b', 'a', 'c'])); // ['a']
+// console.log(findDuplicates([1, 2, 3])); // []
