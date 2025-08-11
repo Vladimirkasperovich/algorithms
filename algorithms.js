@@ -277,3 +277,25 @@ function isBalanced(str) {
 // console.log(isBalanced('{[()]}')); // true
 // console.log(isBalanced('{[(])}')); // false
 // console.log(isBalanced('()[]{}')); // true
+
+/**
+ * Реализуй функцию compose(...fns), которая принимает несколько функций
+ * и возвращает одну функцию, выполняющую их справа налево.
+ */
+function compose(...fns) {
+  // твой код
+  return function (...args) {
+    return fns.reduceRight(
+      (acc, cur) => {
+        acc = cur(acc);
+        return acc;
+      },
+      ...args,
+    );
+  };
+}
+
+// const add2 = (x) => x + 2;
+// const mul3 = (x) => x * 3;
+//
+// console.log(compose(mul3, add2)(5)); // (5 + 2) * 3 = 21
