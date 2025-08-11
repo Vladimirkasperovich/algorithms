@@ -21,3 +21,25 @@ function hasUniqueChars(str) {
 // console.log(hasUniqueChars('abcdef')); // true
 // console.log(hasUniqueChars('aabcde')); // false
 // console.log(hasUniqueChars('')); // true
+
+function isBalanced(str) {
+  const map = { '(': ')', '{': '}', '[': ']' };
+  const stack = [];
+
+  for (const bracket of str) {
+    if (map[bracket]) {
+      stack.push(bracket);
+    } else {
+      const lastBracket = stack.pop();
+      if (map[lastBracket] !== bracket) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
+
+// console.log(isBalanced('{[()]}')); // true
+// console.log(isBalanced('{[(])}')); // false
+// console.log(isBalanced('()[]{}')); // true
