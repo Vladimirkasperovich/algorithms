@@ -167,3 +167,20 @@ const getUsersAndPosts = (users, posts) => {
 //     ],
 //   ),
 // );
+
+function findPairs(arr, target) {
+  const seen = {};
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    const item = arr[i];
+    const diff = target - item;
+    if (seen[diff]) {
+      result.push([diff, item]);
+    }
+    seen[item] = item;
+  }
+  return result;
+}
+
+// console.log(findPairs([1, 2, 3, 4, 5], 5));
+// [[1,4], [2,3]]
