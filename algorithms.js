@@ -184,3 +184,18 @@ function findPairs(arr, target) {
 
 // console.log(findPairs([1, 2, 3, 4, 5], 5));
 // [[1,4], [2,3]]
+
+const twoSum = (arr, target) => {
+  const seen = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    const diff = target - num;
+    if (seen.has(diff)) {
+      return [seen.get(diff), i];
+    }
+    seen.set(num, i);
+  }
+};
+
+// console.log(twoSum([0, 1, 3, 5, 6, 9], 8)); //[2, 3]
+// console.log(twoSum([0, 1, 3, 5, 6, 9], 11)); //[2, 3]
