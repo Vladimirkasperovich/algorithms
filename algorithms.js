@@ -190,3 +190,39 @@ const quickSort = (arr) => {
 };
 
 // console.log(quickSort([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]));
+
+const isPangram = (str) => {
+  const map = new Map();
+  for (const char of str.toLowerCase()) {
+    if (/[a-z]/g.test(char)) {
+      map.set(char, (map.get(char) || 0) + 1);
+    }
+  }
+  return map.size === 26;
+};
+
+// console.log(isPangram('The quick brown fox jumps over the lazy dog'));
+// // true (английская панграмма, содержит все буквы a–z)
+//
+// console.log(isPangram('Hello world'));
+// // false (не хватает многих букв)
+//
+// console.log(isPangram('Pack my box with five dozen liquor jugs'));
+// // true (английская панграмма)
+//
+// console.log(isPangram('Sphinx of black quartz, judge my vow'));
+// // true (ещё одна английская панграмма)
+//
+// console.log(
+//   isPangram('Съешь же ещё этих мягких французских булок, да выпей чаю'),
+// );
+// // true (русская панграмма, содержит все буквы русского алфавита)
+//
+// console.log(isPangram('Привет мир'));
+// // false (не хватает букв)
+//
+// console.log(isPangram(''));
+// // false (пустая строка)
+//
+// console.log(isPangram('ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+// true (все английские буквы, без пробелов и знаков)
