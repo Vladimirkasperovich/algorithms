@@ -274,6 +274,6 @@ function isBalanced(str) {
   return stack.length === 0;
 }
 
-console.log(isBalanced('{[()]}')); // true
-console.log(isBalanced('{[(])}')); // false
-console.log(isBalanced('()[]{}')); // true
+// console.log(isBalanced('{[()]}')); // true
+// console.log(isBalanced('{[(])}')); // false
+// console.log(isBalanced('()[]{}')); // true
