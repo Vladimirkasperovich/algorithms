@@ -345,3 +345,30 @@ function once(fn) {
 //
 // console.log(onceFn(1, 2, 3)); // 6
 // console.log(onceFn(2, 3, 6)); // returns undefined without calling fn
+
+const getAverage = (arr) => {
+  const filteredArray = arr.filter((u) => u.isActive);
+  const usersResult = {};
+  let averageAge = 0;
+  filteredArray.forEach((u) => {
+    if (!usersResult['names']) {
+      usersResult['names'] = [u.name];
+    } else {
+      usersResult['names'].push(u.name);
+    }
+    averageAge += u.age;
+  });
+  usersResult['averageAge'] = averageAge / filteredArray.length;
+  return usersResult;
+};
+
+// console.log(
+//   getAverage([
+//     { name: 'Jon', isActive: true, age: 18 },
+//     { name: 'Ban', isActive: false, age: 45 },
+//     { name: 'Stive', isActive: true, age: 42 },
+//     { name: 'Jon', isActive: true, age: 45 },
+//   ]),
+// );
+
+/*Вот эту задачу давал в конце:Есть массив юзеров const arr = [{name: 'Jon', isActive: true, age: 18}, {name: 'Ban', isActive: false, age: 45}, {name: 'Stive', isActive: true, age: 42}, {name: 'Jon', isActive: true, age: 45}]; нужно вернуть объект в котором будут поля names, averageAge. Причем names - массив имен всех активных юзеров, averageAge - средний возраст всех активных юзеров.*/
