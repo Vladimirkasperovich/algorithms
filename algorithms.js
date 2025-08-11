@@ -226,3 +226,54 @@ const isPangram = (str) => {
 //
 // console.log(isPangram('ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
 // true (все английские буквы, без пробелов и знаков)
+
+/**
+ * Напиши функцию groupBy(arr, key), которая сгруппирует массив объектов по значению свойства key.
+ */
+function groupBy(arr, key) {
+  const result = {};
+  arr.forEach((u) => {
+    const { [key]: keyValue } = u;
+    if (!result[keyValue]) {
+      result[keyValue] = [u];
+    } else {
+      result[keyValue].push(u);
+    }
+  });
+  return result;
+}
+
+// console.log(
+//   groupBy(
+//     [
+//       { name: 'John', age: 25 },
+//       { name: 'Jane', age: 25 },
+//       { name: 'Mike', age: 30 },
+//     ],
+//     'age',
+//   ),
+// );
+// Ожидается: { 25: [ {name:'John', age:25}, {name:'Jane', age:25} ], 30: [ {name:'Mike', age:30} ] }
+
+/**
+ * Проверь, является ли строка сбалансированной по скобкам: (), {}, []
+ */
+function isBalanced(str) {
+  const map = { '(': ')', '{': '}', '[': ']' };
+  const stack = [];
+  for (const bracket of str) {
+    if (map[bracket]) {
+      stack.push(bracket);
+    } else if (Object.values(map).includes(bracket)) {
+      const lastElem = stack.pop();
+      if (map[lastElem] !== bracket) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
+}
+
+console.log(isBalanced('{[()]}')); // true
+console.log(isBalanced('{[(])}')); // false
+console.log(isBalanced('()[]{}')); // true
