@@ -110,3 +110,16 @@ function compose(...fns) {
 //
 // console.log(compose(mul3, add2)(5)); // (5 + 2) * 3 = 21
 // console.log(compose(add2, mul3)(5)); // (5 * 3) + 2 = 17
+
+function wordFrequency(str) {
+  const arr = str.split(' ');
+  const map = new Map();
+  arr.forEach((word) => {
+    const currentWord = word.toLowerCase();
+    map.set(currentWord, (map.get(currentWord) || 0) + 1);
+  });
+  return map;
+}
+
+// console.log(wordFrequency('Hello world hello'));
+// { hello: 2, world: 1 }
