@@ -123,3 +123,47 @@ function wordFrequency(str) {
 
 // console.log(wordFrequency('Hello world hello'));
 // { hello: 2, world: 1 }
+
+function debounce(fn, delay) {
+  let timeoutID;
+  return () => {
+    clearTimeout(timeoutID);
+    timeoutID = setTimeout(() => {
+      fn();
+    }, delay);
+  };
+}
+
+// console.log(debounce(() => 5 + 1, 100));
+// console.log(debounce(() => 4 + 1, 100));
+// console.log(debounce(() => 3 + 1, 100));
+
+// Есть массив пользователей и массив постов
+// users = [{id:1, name:'John'}, {id:2, name:'Jane'}]
+// posts = [{id:1, userId:1, title:'Post 1'}, {id:2, userId:2, title:'Post 2'}]
+// Нужно получить объект вида:
+// {
+//   John: ['Post 1'],
+//   Jane: ['Post 2']
+// }
+
+const getUsersAndPosts = (users, posts) => {
+  const result = {};
+  users.forEach(({ name, id }) => {
+    result[name] = posts.filter((p) => p.userId === id).map((p) => p.title);
+  });
+  return result;
+};
+
+// console.log(
+//   getUsersAndPosts(
+//     [
+//       { id: 1, name: 'John' },
+//       { id: 2, name: 'Jane' },
+//     ],
+//     [
+//       { id: 1, userId: 1, title: 'Post 1' },
+//       { id: 2, userId: 2, title: 'Post 2' },
+//     ],
+//   ),
+// );
