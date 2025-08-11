@@ -348,17 +348,18 @@ function once(fn) {
 
 const getAverage = (arr) => {
   const filteredArray = arr.filter((u) => u.isActive);
-  const usersResult = {};
+  const usersResult = new Map();
   let averageAge = 0;
   filteredArray.forEach((u) => {
-    if (!usersResult['names']) {
-      usersResult['names'] = [u.name];
+    if (!usersResult.has('names')) {
+      usersResult.set('names', [u.name]);
     } else {
-      usersResult['names'].push(u.name);
+      usersResult.get('names').push(u.name);
     }
     averageAge += u.age;
   });
-  usersResult['averageAge'] = averageAge / filteredArray.length;
+
+  usersResult.set('averageAge', averageAge / filteredArray.length);
   return usersResult;
 };
 
