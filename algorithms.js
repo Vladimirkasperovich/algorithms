@@ -66,5 +66,25 @@ const removeDuplicates = (nums) => {
   }
   return k;
 };
+
 // console.log(removeDuplicates([1, 1, 2])); //2 [1,2,_]
 // console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])); //5 [0,1,2,3,4,_,_,_,_,_]
+
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+const removeElement = (nums, val) => {
+  let k = 0;
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    if (num !== val) {
+      nums[k++] = num;
+    }
+  }
+  return k;
+};
+
+// console.log(removeElement([3, 2, 2, 3], 3)); //2 -> [2,2,_,_]
+// console.log(removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)); //5 -> [0,1,4,0,3,_,_,_]
