@@ -207,3 +207,19 @@ const canConstruct = (ransomNote, magazine) => {
 // console.log(canConstruct('a', 'b')); //false
 // console.log(canConstruct('aa', 'ab')); //false
 // console.log(canConstruct('aa', 'aab')); //true
+
+const groupActiveUsers = (users) => {
+  const activeUsers = users.filter((u) => u.isActive);
+  const names = activeUsers.map((u) => u.name);
+  const averageAge =
+    activeUsers.reduce((acc, cur) => acc + cur.age, 0) / activeUsers.length;
+  return { names, averageAge };
+};
+
+// const arr = [
+//   { name: 'Jon', isActive: true, age: 18 },
+//   { name: 'Ban', isActive: false, age: 45 },
+//   { name: 'Stive', isActive: true, age: 42 },
+//   { name: 'Jon', isActive: true, age: 45 },
+// ];
+// console.log(groupActiveUsers(arr));
