@@ -249,3 +249,29 @@ const sleep = (millis) => {
 
 // let t = Date.now();
 // sleep(100).then(() => console.log(Date.now() - t)); // 100
+
+/**
+ * @param {Function} fn
+ * @return {Function}
+ */
+const memoize = (fn) => {
+  const cache = new Map();
+  return function (...args) {
+    const key = JSON.stringify(args);
+    if (!cache.has(key)) {
+      cache.set(key, fn(...args));
+    }
+
+    const result = cache.get(key);
+    return result;
+  };
+};
+
+// let callCount = 0;
+// const memoizedFn = memoize(function (a, b) {
+//   callCount += 1;
+//   return a + b;
+// });
+// console.log(memoizedFn(2, 3)); // 5
+// console.log(memoizedFn(2, 3)); // 5
+// console.log(callCount); // 1
