@@ -88,3 +88,27 @@ const removeElement = (nums, val) => {
 
 // console.log(removeElement([3, 2, 2, 3], 3)); //2 -> [2,2,_,_]
 // console.log(removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)); //5 -> [0,1,4,0,3,_,_,_]
+
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+const isPalindrome = (x) => {
+  if (x < 0) return false;
+  const str = x.toString();
+  let start = 0;
+  let end = str.length - 1;
+  while (start < end) {
+    if (str[start] !== str[end]) {
+      return false;
+    }
+    start++;
+    end--;
+  }
+  return true;
+};
+
+// console.log(isPalindrome(121)); //true
+// console.log(isPalindrome(-121)); //false
+// console.log(isPalindrome(10)); //false
+// console.log(isPalindrome(100)); //false
