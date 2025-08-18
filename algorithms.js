@@ -135,3 +135,25 @@ const isPalindromeStr = (s) => {
 // console.log(isPalindromeStr('race a car')); //false
 // console.log(isPalindromeStr(' ')); //true
 // console.log(isPalindromeStr('0P')); //false
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+const isSubsequence = (s, t) => {
+  let i = 0;
+  let j = 0;
+
+  while (i < s.length && j < t.length) {
+    if (s[i] === t[j]) {
+      i++;
+    }
+    j++;
+  }
+
+  return i === s.length;
+};
+
+// console.log(isSubsequence('abc', 'ahbgdc')); //true
+// console.log(isSubsequence('axc', 'ahbgdc')); //false
