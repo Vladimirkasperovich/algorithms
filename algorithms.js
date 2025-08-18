@@ -112,3 +112,26 @@ const isPalindrome = (x) => {
 // console.log(isPalindrome(-121)); //false
 // console.log(isPalindrome(10)); //false
 // console.log(isPalindrome(100)); //false
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+const isPalindromeStr = (s) => {
+  const str = s.toLowerCase().replace(/[^a-z0-9]/g, '');
+  let start = 0;
+  let end = str.length - 1;
+  while (start < end) {
+    if (str[start] !== str[end]) {
+      return false;
+    }
+    start++;
+    end--;
+  }
+  return true;
+};
+
+// console.log(isPalindromeStr('A man, a plan, a canal: Panama')); //true
+// console.log(isPalindromeStr('race a car')); //false
+// console.log(isPalindromeStr(' ')); //true
+// console.log(isPalindromeStr('0P')); //false
