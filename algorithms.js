@@ -157,3 +157,29 @@ const isSubsequence = (s, t) => {
 
 // console.log(isSubsequence('abc', 'ahbgdc')); //true
 // console.log(isSubsequence('axc', 'ahbgdc')); //false
+
+/**
+ * @param {number[]} numbers
+ * @param {number} target
+ * @return {number[]}
+ */
+const twoSumSortedInput = (numbers, target) => {
+  let start = 0;
+  let end = numbers.length - 1;
+
+  while (start < end) {
+    const sum = numbers[start] + numbers[end];
+    if (sum === target) {
+      return [start + 1, end + 1];
+    } else if (sum < target) {
+      start++;
+    } else {
+      end--;
+    }
+  }
+  return [];
+};
+
+// console.log(twoSumSortedInput([2, 7, 11, 15], 9)); //[1,2]
+// console.log(twoSumSortedInput([2, 3, 4], 6)); //[1,3]
+// console.log(twoSumSortedInput([-1, 0], -1)); //[1,2]
