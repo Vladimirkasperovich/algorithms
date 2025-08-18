@@ -234,3 +234,18 @@ Array.prototype.last = function () {
 
 // const arr = [1, 2, 3];
 // console.log(arr.last());
+/**
+ * @param {number} millis
+ * @return {Promise}
+ */
+
+const sleep = (millis) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(millis);
+    }, millis);
+  });
+};
+
+// let t = Date.now();
+// sleep(100).then(() => console.log(Date.now() - t)); // 100
