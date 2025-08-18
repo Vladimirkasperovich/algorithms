@@ -183,3 +183,27 @@ const twoSumSortedInput = (numbers, target) => {
 // console.log(twoSumSortedInput([2, 7, 11, 15], 9)); //[1,2]
 // console.log(twoSumSortedInput([2, 3, 4], 6)); //[1,3]
 // console.log(twoSumSortedInput([-1, 0], -1)); //[1,2]
+
+/**
+ * @param {string} ransomNote
+ * @param {string} magazine
+ * @return {boolean}
+ */
+const canConstruct = (ransomNote, magazine) => {
+  const seen = {};
+  for (const item of magazine) {
+    seen[item] = (seen[item] || 0) + 1;
+  }
+
+  for (const item of ransomNote) {
+    if (!seen[item]) {
+      return false;
+    }
+    seen[item]--;
+  }
+  return true;
+};
+
+// console.log(canConstruct('a', 'b')); //false
+// console.log(canConstruct('aa', 'ab')); //false
+// console.log(canConstruct('aa', 'aab')); //true
