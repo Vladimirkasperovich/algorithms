@@ -48,3 +48,23 @@ const isValid = (s) => {
 // console.log(isValid('(]')); //false
 // console.log(isValid('([])')); //true
 // console.log(isValid('([)]')); //false
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+const removeDuplicates = (nums) => {
+  const map = new Map();
+  let k = 0;
+  for (let i = 0; i < nums.length; i++) {
+    let num = nums[i];
+    if (!map.has(num)) {
+      map.set(num, num);
+      nums[k] = num;
+      k++;
+    }
+  }
+  return k;
+};
+// console.log(removeDuplicates([1, 1, 2])); //2 [1,2,_]
+// console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])); //5 [0,1,2,3,4,_,_,_,_,_]
