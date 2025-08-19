@@ -319,3 +319,26 @@ TimeLimitedCache.prototype.count = function () {
 // console.log(timeLimitedCache.set(1, 42, 1000)); // false
 // console.log(timeLimitedCache.get(1)); // 42
 // console.log(timeLimitedCache.count()); // 1
+
+const sortedEvenNumbers = (arr) => {
+  const evenSortedArray = arr
+    .filter((item) => item % 2 === 0)
+    .sort((a, b) => a - b);
+
+  const result = [];
+  let evenIndexes = 0;
+  for (let i = 0; i < arr.length; i++) {
+    const item = arr[i];
+    if (item % 2 !== 0) {
+      result.push(item);
+    } else {
+      result.push(evenSortedArray[evenIndexes++]);
+    }
+  }
+  return result;
+};
+
+// const arr = [1, 2, 11, 4, 23, 5, 6, 9];
+// console.log(sortedEvenNumbers(arr));
+// Дан массив arr = [1,2,11,4,23,5,6,9]
+// Необходимо отсортировать четные числа по форзастанию и оставить их на месте
