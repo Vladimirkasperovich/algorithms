@@ -342,3 +342,20 @@ const sortedEvenNumbers = (arr) => {
 // console.log(sortedEvenNumbers(arr));
 // Дан массив arr = [1,2,11,4,23,5,6,9]
 // Необходимо отсортировать четные числа по форзастанию и оставить их на месте
+
+const progressAnagram = (arr) => {
+  const seen = new Map();
+  for (const word of arr) {
+    const key = word.toLowerCase().split('').sort().join('');
+    if (!seen.has(key)) {
+      seen.set(key, []);
+    } else {
+      seen.get(key).push(word);
+    }
+  }
+  const sorted = [...seen.values()].sort((a, b) => a.length - b.length);
+  return sorted.flat();
+};
+// console.log(progressAnagram(['гора', 'раки', 'каир', 'рога', 'ирак', 'игра']));
+// Дан массив слов arr = ['гора', 'раки', 'каир', 'рога', 'ирак', 'игра']
+// Необходимо найти все слова аннограммы и вернуть массив анаграм по возрастанию от количества повторений
