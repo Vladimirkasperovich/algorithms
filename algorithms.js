@@ -359,3 +359,40 @@ const progressAnagram = (arr) => {
 // console.log(progressAnagram(['гора', 'раки', 'каир', 'рога', 'ирак', 'игра']));
 // Дан массив слов arr = ['гора', 'раки', 'каир', 'рога', 'ирак', 'игра']
 // Необходимо найти все слова аннограммы и вернуть массив анаграм по возрастанию от количества повторений
+
+const promiseAll = (promises) => {
+  const result = [];
+  let resolvedCount = 0;
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < promises.length; i++) {
+      const promise = promises[i];
+      Promise.resolve(promise)
+        .then((data) => {
+          resolvedCount += 1;
+          result[i] = data;
+          if (resolvedCount === promises.length) {
+            resolve(result);
+          }
+        })
+        .catch(reject);
+    }
+  });
+};
+
+// const pr1 = new Promise((resolve) => resolve(3));
+// const pr2 = new Promise((resolve) => resolve(2));
+// const pr3 = new Promise((resolve) => resolve(12));
+//
+// const resolve = (value, timeout) =>
+//   new Promise((res) => setTimeout(res, timeout, value));
+//
+// const reject = (value, timeout) =>
+//   new Promise((_, rej) => setTimeout(rej, timeout, value));
+//
+// promiseAll([resolve(1, 200), resolve(2, 300), resolve(3, 100)]).then(
+//   console.log,
+// ); // [2, 3, 1]
+//
+// promiseAll([reject(1, 100), reject(2, 500), resolve(3, 1000)]).catch(
+//   console.error,
+// ); // 1
