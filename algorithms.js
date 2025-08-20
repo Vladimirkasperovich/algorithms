@@ -396,3 +396,11 @@ const promiseAll = (promises) => {
 // promiseAll([reject(1, 100), reject(2, 500), resolve(3, 1000)]).catch(
 //   console.error,
 // ); // 1
+
+const findVowelsLength = (str) => {
+  return [...str].reduce((acc, cur) => {
+    if (/[aeioeuy]/g.test(cur)) acc += 1;
+    return acc;
+  }, 0);
+};
+console.log(findVowelsLength('akksjai')); //3
