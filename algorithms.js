@@ -398,9 +398,31 @@ const promiseAll = (promises) => {
 // ); // 1
 
 const findVowelsLength = (str) => {
-  return [...str].reduce((acc, cur) => {
+  return str.split('').reduce((acc, cur) => {
     if (/[aeioeuy]/g.test(cur)) acc += 1;
     return acc;
   }, 0);
 };
-console.log(findVowelsLength('akksjai')); //3
+// console.log(findVowelsLength('akksjai')); //3
+
+const getValueFromObj = (obj, path) => {
+  const arr = path.split('.');
+  let current = obj;
+  for (let i = 0; i < arr.length; i++) {
+    const key = arr[i];
+    if (!current) {
+      return undefined;
+    } else {
+      current = current[key];
+    }
+  }
+  return current;
+};
+
+// const obj = {
+//   value: {
+//     bar: 100,
+//   },
+// };
+//
+// console.log(getValueFromObj(obj, 'value.bar')); //100
