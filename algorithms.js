@@ -477,3 +477,31 @@ const addTwoPromises = async (promise1, promise2) => {
 };
 
 // addTwoPromises(Promise.resolve(2), Promise.resolve(2)).then(console.log); // 4
+
+/**
+ * @param {Function} fn
+ * @param {Array} args
+ * @param {number} t
+ * @return {Function}
+ */
+const cancellable = (fn, args, t) => {
+  const cancelId = setTimeout(() => fn(...args), t);
+  const cancelFn = () => {
+    clearTimeout(cancelId);
+  };
+  return cancelFn;
+};
+
+// const result = [];
+//
+// const fn = (x) => x * 5;
+// const args = [2],
+//   t = 20,
+//   cancelTimeMs = 50;
+//
+// const start = performance.now();
+//
+// const log = (...argsArr) => {
+//   const diff = Math.floor(performance.now() - start);
+//   result.push({ time: diff, returned: fn(...argsArr) });
+// };
