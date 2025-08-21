@@ -445,3 +445,22 @@ const compose = (functions) => {
 
 // const fn = compose([(x) => x + 1, (x) => 2 * x]);
 // console.log(fn(4)); // 9
+
+/**
+ * @param {Function} fn
+ * @return {Function}
+ */
+const once = function (fn) {
+  let callsCount = 0;
+  return function (...args) {
+    callsCount += 1;
+    if (callsCount === 1) return fn(...args);
+    return undefined;
+  };
+};
+
+// let fn = (a, b, c) => a + b + c;
+// let onceFn = once(fn);
+//
+// console.log(onceFn(1, 2, 3)); // 6
+// console.log(onceFn(2, 3, 6)); // returns undefined without calling fn
