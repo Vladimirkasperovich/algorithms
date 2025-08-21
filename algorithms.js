@@ -464,3 +464,16 @@ const once = function (fn) {
 //
 // console.log(onceFn(1, 2, 3)); // 6
 // console.log(onceFn(2, 3, 6)); // returns undefined without calling fn
+
+/**
+ * @param {Promise} promise1
+ * @param {Promise} promise2
+ * @return {Promise}
+ */
+const addTwoPromises = async (promise1, promise2) => {
+  const result = await Promise.all([promise1, promise2]);
+  const response = (await result[0]) + (await result[1]);
+  return response;
+};
+
+// addTwoPromises(Promise.resolve(2), Promise.resolve(2)).then(console.log); // 4
