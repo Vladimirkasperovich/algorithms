@@ -672,21 +672,17 @@ const cancellableInterval = (fn, args, t) => {
  */
 const timeLimit = (fn, t) => {
   return async function (...args) {
-    return new Promise((resolve, reject) => {
-      const promises = Promise.race([
+    try {
+      const res = await Promise.race([
         fn(...args),
         new Promise((_, reject) =>
           setTimeout(() => reject('Time Limit Exceeded'), t),
         ),
       ]);
-      promises
-        .then((response) => {
-          resolve(response);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+      return Promise.resolve(res);
+    } catch (error) {
+      return Promise.reject(error);
+    }
   };
 };
 
