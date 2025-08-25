@@ -664,3 +664,31 @@ const cancellableInterval = (fn, args, t) => {
 // const cancelFn = cancellableInterval(fn, args, t);
 // console.log(cancelFn);
 // setTimeout(cancelFn, cancelTimeMs);
+
+/**
+ * @param {Function} fn
+ * @param {number} t
+ * @return {Function}
+ */
+const timeLimit = (fn, t) => {
+  return async function (...args) {
+    return new Promise((resolve, reject) => {
+      const promises = Promise.race([
+        fn(...args),
+        new Promise((_, reject) =>
+          setTimeout(() => reject('Time Limit Exceeded'), t),
+        ),
+      ]);
+      promises
+        .then((response) => {
+          resolve(response);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  };
+};
+
+// const limited = timeLimit((t) => new Promise((res) => setTimeout(res, t)), 100);
+// limited(150).catch(console.log); // "Time Limit Exceeded" at t=100ms
