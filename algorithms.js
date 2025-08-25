@@ -630,3 +630,37 @@ function memoize1(fn) {
 // console.log(memoizedFn(2, 3)); // 5
 // console.log(memoizedFn(2, 3)); // 5
 // console.log(callCount); // 1
+
+/**
+ * @param {Function} fn
+ * @param {Array} args
+ * @param {number} t
+ * @return {Function}
+ */
+const cancellableInterval = (fn, args, t) => {
+  const result = [];
+  let time = 0;
+
+  const calledFn = fn(...args);
+  result.push({ time: 0, returned: calledFn });
+
+  const intervalID = setInterval(() => {
+    time += t;
+    const returnedFn = fn(...args);
+    result.push({ time: t, returnedFn });
+  }, t);
+
+  const cancelFn = () => {
+    clearInterval(intervalID);
+  };
+
+  return cancelFn;
+};
+// const fn = (x) => x * 2;
+// const args = [4];
+// const t = 35;
+// const cancelTimeMs = 190;
+//
+// const cancelFn = cancellableInterval(fn, args, t);
+// console.log(cancelFn);
+// setTimeout(cancelFn, cancelTimeMs);
