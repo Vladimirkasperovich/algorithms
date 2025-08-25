@@ -563,3 +563,20 @@ const map = (arr, fn) => {
   return res;
 };
 // console.log(map([1, 2, 3], (n) => n + 1));
+
+/**
+ * @param {number[]} arr
+ * @param {Function} fn
+ * @return {number[]}
+ */
+const filter = (arr, fn) => {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (fn(arr[i], i, arr)) {
+      result.push(arr[i]);
+    }
+  }
+  return result;
+};
+
+// console.log(filter([1, 1, 1, 2, 3, 4, 5], (n) => n === 1));
