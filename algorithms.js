@@ -505,3 +505,28 @@ const cancellable = (fn, args, t) => {
 //   const diff = Math.floor(performance.now() - start);
 //   result.push({ time: diff, returned: fn(...argsArr) });
 // };
+
+/**
+ * @param {string} val
+ * @return {Object}
+ */
+const expect = (val) => {
+  function toBe(n) {
+    if (n === val) {
+      return true;
+    } else {
+      throw new Error('Not Equal');
+    }
+  }
+  function notToBe(n) {
+    if (n !== val) {
+      return true;
+    } else {
+      throw new Error('Equal');
+    }
+  }
+  return { toBe, notToBe };
+};
+
+// console.log(expect(5).toBe(5)); // true
+// console.log(expect(5).notToBe(5)); // throws "Equal"
