@@ -752,3 +752,29 @@ const chunk = (arr, size) => {
 // console.log(chunk([1, 9, 6, 3, 2], 3)); //[[1,9,6],[3,2]]
 // console.log(chunk([8, 5, 3, 2, 6], 6)); //[[8,5,3,2,6]]
 // console.log(chunk([], 1)); //[]
+
+/**
+ * @param {Function} fn
+ * @return {Object}
+ */
+Array.prototype.groupBy = function (fn) {
+  const arr = this;
+  const obj = {};
+  for (let i = 0; i < arr.length; i++) {
+    const current = arr[i];
+    const key = fn(current);
+    if (!obj[key]) {
+      obj[key] = [current];
+    } else {
+      obj[key].push(current);
+    }
+  }
+  return obj;
+};
+
+// console.log([1, 2, 3].groupBy(String)); // {"1":[1],"2":[2],"3":[3]}
+// console.log(
+//   [{ id: '1' }, { id: '1' }, { id: '2' }].groupBy(function (item) {
+//     return item.id;
+//   }),
+// ); //{"1":[{"id":"1"},{"id":"1"}],"2":[{"id":"2"}]}
