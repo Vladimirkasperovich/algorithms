@@ -708,3 +708,27 @@ const debounce = (fn, t) => {
 // console.log(log('Hello')); // cancelled
 // console.log(log('Hello')); // cancelled
 // console.log(log('Hello')); // Logged at t=100ms
+
+/**
+ * @param {Array<Function>} functions
+ * @return {Promise<any>}
+ */
+const promiseAll1 = (functions) => {
+  const result = [];
+  let count = 0;
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < functions.length; i++) {
+      const fn = Promise.resolve(functions[i]());
+      fn.then((res) => {
+        count += 1;
+        result[i] = res;
+        if (count === functions.length) {
+          resolve(result);
+        }
+      }).catch(reject);
+    }
+  });
+};
+
+// const promise = promiseAll1([() => new Promise((res) => res(42))]);
+// promise.then(console.log); // [42]
