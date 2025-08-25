@@ -549,3 +549,17 @@ const createCounter = (init) => {
 // console.log(counter.increment()); // 6
 // console.log(counter.reset()); // 5
 // console.log(counter.decrement()); // 4
+
+/**
+ * @param {number[]} arr
+ * @param {Function} fn
+ * @return {number[]}
+ */
+const map = (arr, fn) => {
+  const res = [];
+  for (let i = 0; i < arr.length; i++) {
+    res.push(fn(arr[i], i, arr));
+  }
+  return res;
+};
+// console.log(map([1, 2, 3], (n) => n + 1));
