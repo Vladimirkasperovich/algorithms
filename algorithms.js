@@ -580,3 +580,28 @@ const filter = (arr, fn) => {
 };
 
 // console.log(filter([1, 1, 1, 2, 3, 4, 5], (n) => n === 1));
+
+/**
+ * @param {number[]} nums
+ * @param {Function} fn
+ * @param {number} init
+ * @return {number}
+ */
+const reduce = (nums, fn, init) => {
+  let acc = init;
+  for (let i = 0; i < nums.length; i++) {
+    acc = fn(acc, nums[i], i, nums);
+  }
+  return acc;
+};
+
+// console.log(reduce([1, 2, 3, 4], (acc, cur) => acc + cur, 0));
+// console.log(
+//   reduce(
+//     [1, 2, 3, 4],
+//     function sum(accum, curr) {
+//       return accum + curr * curr;
+//     },
+//     100,
+//   ),
+// );
