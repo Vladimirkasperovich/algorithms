@@ -732,3 +732,23 @@ const promiseAll1 = (functions) => {
 
 // const promise = promiseAll1([() => new Promise((res) => res(42))]);
 // promise.then(console.log); // [42]
+
+/**
+ * @param {Array} arr
+ * @param {number} size
+ * @return {Array}
+ */
+const chunk = (arr, size) => {
+  if (!arr.length) return arr;
+  const result = [];
+
+  for (let i = 0; i < arr.length; i += size) {
+    const chunk = arr.slice(i, i + size);
+    result.push(chunk);
+  }
+  return result;
+};
+// console.log(chunk([1, 2, 3, 4, 5], 1)); //[[1],[2],[3],[4],[5]]
+// console.log(chunk([1, 9, 6, 3, 2], 3)); //[[1,9,6],[3,2]]
+// console.log(chunk([8, 5, 3, 2, 6], 6)); //[[8,5,3,2,6]]
+// console.log(chunk([], 1)); //[]
