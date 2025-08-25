@@ -688,3 +688,23 @@ const timeLimit = (fn, t) => {
 
 // const limited = timeLimit((t) => new Promise((res) => setTimeout(res, t)), 100);
 // limited(150).catch(console.log); // "Time Limit Exceeded" at t=100ms
+
+/**
+ * @param {Function} fn
+ * @param {number} t milliseconds
+ * @return {Function}
+ */
+const debounce = (fn, t) => {
+  let timerId;
+  return function (...args) {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      fn(...args);
+    }, t);
+  };
+};
+
+// const log = debounce(console.log, 100);
+// console.log(log('Hello')); // cancelled
+// console.log(log('Hello')); // cancelled
+// console.log(log('Hello')); // Logged at t=100ms
