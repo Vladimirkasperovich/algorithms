@@ -605,3 +605,28 @@ const reduce = (nums, fn, init) => {
 //     100,
 //   ),
 // );
+
+/**
+ * @param {Function} fn
+ * @return {Function}
+ */
+function memoize1(fn) {
+  const cache = new Map();
+  return (...args) => {
+    const key = JSON.stringify(args);
+    if (!cache.has(key)) {
+      cache.set(key, fn(...args));
+    }
+    const res = cache.get(key);
+    return res;
+  };
+}
+
+// let callCount = 0;
+// const memoizedFn = memoize(function (a, b) {
+//   callCount += 1;
+//   return a + b;
+// });
+// console.log(memoizedFn(2, 3)); // 5
+// console.log(memoizedFn(2, 3)); // 5
+// console.log(callCount); // 1
