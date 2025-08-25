@@ -530,3 +530,22 @@ const expect = (val) => {
 
 // console.log(expect(5).toBe(5)); // true
 // console.log(expect(5).notToBe(5)); // throws "Equal"
+
+const createCounter = (init) => {
+  let value = init;
+  const increment = () => {
+    return (value += 1);
+  };
+  const reset = () => {
+    return (value = init);
+  };
+  const decrement = () => {
+    return (value -= 1);
+  };
+  return { increment, reset, decrement };
+};
+
+// const counter = createCounter(5);
+// console.log(counter.increment()); // 6
+// console.log(counter.reset()); // 5
+// console.log(counter.decrement()); // 4
