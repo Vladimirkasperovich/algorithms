@@ -957,3 +957,19 @@ const reverseVowels = (s) => {
 // console.log(reverseVowels('IceCreAm')); //"AceCreIm"
 // console.log(reverseVowels('leetcode')); //"leotcede"
 // console.log(reverseVowels('Yo! Bottoms up, U.S. Motto, boy!')); //"Yo! Bottoms Up, u.S. Motto, boy!"
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+const reverseWords = (s) => {
+  return s
+    .trim()
+    .split(' ')
+    .reverse()
+    .filter((v) => v)
+    .join(' ');
+};
+// console.log(reverseWords('the sky is blue')); //"blue is sky the"
+// console.log(reverseWords('  hello world  ')); //"world hello"
+// console.log(reverseWords('a good   example')); //"example good a"
