@@ -803,3 +803,60 @@ const sortBy = (arr, fn) => {
 //     (x) => x[1],
 //   ),
 // ); //[[10, 1], [5, 2], [3, 4]]
+
+/**
+ * @param {Array} arr1
+ * @param {Array} arr2
+ * @return {Array}
+ */
+const join = (arr1, arr2) => {
+  const map = new Map();
+  for (const item of arr1) {
+    if (!map.has(item.id)) {
+      map.set(item.id, item);
+    }
+  }
+  for (const item of arr2) {
+    if (map.has(item.id)) {
+      const saved = map.get(item.id);
+      map.delete(item.id);
+      map.set(item.id, { ...saved, ...item });
+    } else {
+      map.set(item.id, item);
+    }
+  }
+  return [...map.values()].sort((a, b) => a.id - b.id);
+};
+// console.log(
+//   join(
+//     [
+//       { id: 1, x: 1 },
+//       { id: 2, x: 9 },
+//     ],
+//     [{ id: 3, x: 5 }],
+//   ),
+// ); //[{"id": 1, "x": 1},{"id": 2, "x": 9},{"id": 3, "x": 5}]
+// console.log(
+//   join(
+//     [
+//       { id: 1, x: 2, y: 3 },
+//       { id: 2, x: 3, y: 6 },
+//     ],
+//     [
+//       { id: 2, x: 10, y: 20 },
+//       { id: 3, x: 0, y: 0 },
+//     ],
+//   ),
+// ); //[{"id": 1, "x": 2, "y": 3},{"id": 2, "x": 10, "y": 20},{"id": 3, "x": 0, "y": 0}]
+// console.log(
+//   join(
+//     [{ id: 1, b: { b: 94 }, v: [4, 3], y: 48 }],
+//     [
+//       {
+//         id: 1,
+//         b: { c: 84 },
+//         v: [1, 3],
+//       },
+//     ],
+//   ),
+// ); //[{"id": 1, "b": {"c": 84}, "v": [1, 3], "y": 48} ]
