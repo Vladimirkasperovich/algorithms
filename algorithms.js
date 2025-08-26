@@ -990,3 +990,24 @@ const kidsWithCandies = (candies, extraCandies) => {
 // console.log(kidsWithCandies([2, 3, 5, 1, 3], 3)); //[true,true,true,false,true]
 // console.log(kidsWithCandies([4, 2, 1, 1, 2], 1)); //[true,false,false,false,false]
 // console.log(kidsWithCandies([12, 1, 12], 10)); //[true,false,true]
+
+const multiply = (a) => {
+  if (a === undefined) return 1;
+
+  let res = a;
+
+  const inner = (b) => {
+    if (b === undefined) return res;
+    res *= b;
+    return inner;
+  };
+
+  return inner;
+};
+
+// // Тесты
+// console.log(multiply(2)(3)(), '6'); // 6
+// console.log(multiply(), '1'); // 1
+// console.log(multiply(2)(), '2'); // 2
+// console.log(multiply(2)(0)(), '0'); // 0
+// console.log(multiply(0)(2)(), '0'); // 0
