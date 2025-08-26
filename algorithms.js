@@ -894,3 +894,42 @@ const flat = (arr, n) => {
 //     2,
 //   ),
 // ); //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+/**
+ * @param {Object|Array} obj
+ * @return {Object|Array}
+ */
+const compactObject = (obj) => {
+  if (
+    (typeof obj === 'number' && obj) ||
+    (typeof obj === 'string' && obj) ||
+    (typeof obj === 'boolean' && obj)
+  ) {
+    return obj;
+  }
+  if (obj && typeof obj === 'object' && Array.isArray(obj)) {
+    const res = [];
+    for (const item of obj) {
+      const compact = compactObject(item);
+      if (compact) {
+        res.push(compact);
+      }
+    }
+    return res;
+  }
+  if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
+    const result = {};
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        const compact = compactObject(obj[key]);
+        if (compact) {
+          result[key] = compact;
+        }
+      }
+    }
+    return result;
+  }
+};
+// console.log(compactObject([null, 0, false, 1])); //[1]
+// console.log(compactObject({ a: null, b: [false, 1] })); //{"b": [1]}
+// console.log(compactObject([null, 0, 5, [0], [false, 16]])); //[5, [], [16]]
