@@ -933,3 +933,27 @@ const compactObject = (obj) => {
 // console.log(compactObject([null, 0, false, 1])); //[1]
 // console.log(compactObject({ a: null, b: [false, 1] })); //{"b": [1]}
 // console.log(compactObject([null, 0, 5, [0], [false, 16]])); //[5, [], [16]]
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+const reverseVowels = (s) => {
+  const filtered = s
+    .split('')
+    .filter((v) => /[aeiou]/gi.test(v))
+    .reverse();
+  let vowelsCount = 0;
+  let result = '';
+  for (const char of s) {
+    if (!/[aeiou]/gi.test(char)) {
+      result += char;
+    } else {
+      result += filtered[vowelsCount++];
+    }
+  }
+  return result;
+};
+// console.log(reverseVowels('IceCreAm')); //"AceCreIm"
+// console.log(reverseVowels('leetcode')); //"leotcede"
+// console.log(reverseVowels('Yo! Bottoms up, U.S. Motto, boy!')); //"Yo! Bottoms Up, u.S. Motto, boy!"
