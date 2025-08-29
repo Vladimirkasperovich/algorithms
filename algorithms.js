@@ -1019,3 +1019,8 @@ const serializeElementFrequencies = (arr) => {
   }, {});
 };
 // console.log(serializeElementFrequencies([1, 2, 3, 4, 4])); // {'1:1, 2:1, 3:1, 4:2'}
+
+const shuffleArray = (arr) => {
+  return [...arr].sort(() => Math.random() - 0.5);
+};
+// console.log(shuffleArray([1, 2, 3, 4, 5, 6, 7]));
