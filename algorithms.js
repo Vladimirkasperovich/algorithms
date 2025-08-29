@@ -1094,3 +1094,62 @@ const sortByFrequencyWithOrder = (arr) => {
 };
 
 // console.log(sortByFrequencyWithOrder([1, 1, 1, 2, 2, 2, 2, 4, 4, 5, 0])); // [2,1,4,5,0]
+
+/*
+Есть массив операций
+Необходимо операции отсортировать по дате и сгруппировать их по году, а в качестве значений представить массивы с датами в формате MM-DD.
+Пример результаты:
+result = {
+	"2017": [
+		"07-31",
+		"08-22"
+		],
+	"2018": [
+		"01-01",
+		"02-22"
+	]
+}
+*/
+
+const operations = [
+  { date: '2017-07-31', amount: '5422' },
+  { date: '2017-06-30', amount: '5220' },
+  { date: '2017-05-31', amount: '5365' },
+  { date: '2017-08-31', amount: '5451' },
+  { date: '2017-09-30', amount: '5303' },
+  { date: '2018-03-31', amount: '5654' },
+  { date: '2017-10-31', amount: '5509' },
+  { date: '2017-12-31', amount: '5567' },
+  { date: '2018-01-31', amount: '5597' },
+  { date: '2017-11-30', amount: '5359' },
+  { date: '2018-02-28', amount: '5082' },
+  { date: '2018-04-14', amount: '2567' },
+];
+
+function sortOperations(operations) {
+  // Ваш код здесь
+  const map = {};
+  const sortedOperations = [...operations].sort(
+    (a, b) => new Date(a.date) - new Date(b.date),
+  );
+  const dates = sortedOperations.map((item) => item.date);
+
+  for (const date of dates) {
+    const formattedDate = new Date(date);
+    const key = formattedDate.getFullYear();
+    const month = formattedDate.getMonth();
+    const day = formattedDate.getDate();
+    if (!map[key]) {
+      map[key] = [
+        `${month <= 9 ? `0${month}` : month}-${day <= 9 ? `0${day}` : day}`,
+      ];
+    } else {
+      map[key].push(
+        `${month <= 9 ? `0${month}` : month}-${day <= 9 ? `0${day}` : day}`,
+      );
+    }
+  }
+  return map;
+}
+
+// console.log(sortOperations(operations));
