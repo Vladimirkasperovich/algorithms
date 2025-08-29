@@ -1051,3 +1051,46 @@ const getUniqDigits = (arr) => {
 };
 
 // console.log(getUniqDigits(['a',0,4,'4','0',5,'d',7,0,'8',7,10,'s',1,3,'9',10,3,1,9,'u',6,5,'2'])); // output [0,1,2,3,4,5,6,7,8,9,10]`
+
+/*
+Напишите функцию, которая принимает массив строк и возвращает самую частовстречающуюся строку в этом массиве. Если таких строк несколько, то нужно вернуть первую, идя слева на право.
+*/
+
+function highestFrequency(array) {
+  const map = new Map();
+  array.forEach((item) => {
+    map.set(item, (map.get(item) || 0) + 1);
+  });
+  const max = Math.max(...map.values());
+  return [...map.entries()].find((item) => item[1] === max)[0];
+}
+
+// console.log(highestFrequency(['a', 'b', 'c', 'c', 'd', 'e'])); // -> c
+// console.log(highestFrequency(['abc', 'def', 'abc', 'def', 'abc'])); // -> abc
+// console.log(highestFrequency(['abc', 'def'])); // -> abc
+// console.log(
+//   highestFrequency([
+//     'abc',
+//     'abc',
+//     'def',
+//     'def',
+//     'def',
+//     'ghi',
+//     'ghi',
+//     'ghi',
+//     'ghi',
+//   ]),
+// ); // -> ghi
+
+// написать функцию которая принимает массив значений и выводит массив уникальных элементов, отсортированных по частоте
+
+const sortByFrequencyWithOrder = (arr) => {
+  // Ваш код
+  const map = new Map();
+  arr.forEach((item) => {
+    map.set(item, (map.get(item) || 0) + 1);
+  });
+  return [...map.entries()].sort((a, b) => b[1] - a[1]).map((item) => item[0]);
+};
+
+// console.log(sortByFrequencyWithOrder([1, 1, 1, 2, 2, 2, 2, 4, 4, 5, 0])); // [2,1,4,5,0]
