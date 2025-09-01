@@ -1153,3 +1153,43 @@ function sortOperations(operations) {
 }
 
 // console.log(sortOperations(operations));
+
+// Необходимо сделать выборки.
+// 1. Список имен, отсортированный по размеру зарплаты
+// 2. Размер максимальной зарплаты
+// 3. Статистика по каждому отделу: сумма затрат, количество сотрудников, средняя з/п
+
+const arr = [
+  { name: 'Вася', salary: 10000, department: 'Frontend' },
+  { name: 'Петя', salary: 12000, department: 'Backend' },
+  { name: 'Дима', salary: 10500, department: 'Frontend' },
+  { name: 'Оля', salary: 15000, department: 'Backend' },
+  { name: 'Саша', salary: 8000, department: 'Frontend' },
+  { name: 'Олег', salary: 9000, department: 'Testing' },
+];
+
+const findMaxSalary = (data) => {
+  const map = new Map();
+  const namesSortedBySalary = [...data]
+    .sort((a, b) => b.salary - a.salary)
+    .map((item) => item.name);
+  const maxSalary = Math.max(...data.map((item) => item.salary));
+  for (const item of data) {
+    if (!map.has(item.department)) {
+      map.set(item.department, {
+        sum: item.salary,
+        count: 1,
+        avg: item.salary,
+      });
+    } else {
+      map.get(item.department).sum += item.salary;
+      map.get(item.department).count += 1;
+      map.get(item.department).avg =
+        map.get(item.department).sum / map.get(item.department).count;
+    }
+  }
+
+  return [namesSortedBySalary, maxSalary, map];
+};
+
+// console.log(findMaxSalary(arr));
