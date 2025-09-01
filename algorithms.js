@@ -1193,3 +1193,50 @@ const findMaxSalary = (data) => {
 };
 
 // console.log(findMaxSalary(arr));
+
+// дан массив, необходимо вернуть строку с ошибкой если одно из значений не является числом,
+// если все значения верны, то возвращаем разность суммы чисел кратных 7 и максимально значения массива
+
+const getSumOfPreparedNumbers = (arr) => {
+  let sum = 0;
+  let max = -Infinity;
+  for (let i = 0; i < arr.length; i++) {
+    const current = arr[i];
+    if (typeof current !== 'number' || isNaN(current)) {
+      return 'входящие данные не удовлетворяют требованиям';
+    }
+    if (current > max) {
+      max = current;
+    }
+    if (current % 7 === 0) {
+      sum += current;
+    }
+  }
+  return sum - max;
+};
+
+// console.log(
+//   getSumOfPreparedNumbers([
+//     1,
+//     NaN,
+//     21,
+//     40,
+//     50,
+//     35,
+//     2,
+//     NaN,
+//     16,
+//     17,
+//     NaN,
+//     98,
+//     77,
+//     49,
+//   ]),
+// ); // output 'входящие данные не удовлетворяют требованиям'
+// console.log(getSumOfPreparedNumbers([true])); // output 'входящие данные не удовлетворяют требованиям'
+// console.log(getSumOfPreparedNumbers(['smth'])); // output 'входящие данные не удовлетворяют требованиям'
+// console.log(
+//   getSumOfPreparedNumbers([
+//     1, 11, 21, 40, 50, 35, 2, 6, 16, 17, 63, 98, 77, 49,
+//   ]),
+// ); // output 245
