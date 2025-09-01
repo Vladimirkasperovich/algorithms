@@ -1240,3 +1240,22 @@ const getSumOfPreparedNumbers = (arr) => {
 //     1, 11, 21, 40, 50, 35, 2, 6, 16, 17, 63, 98, 77, 49,
 //   ]),
 // ); // output 245
+
+// Реализуйте функцию, которая возвращает индексы двух чисел из массива,
+// сумма которых равна заданному значению
+
+const locateSumPair = (arr, target) => {
+  // Ваш код здесь
+  const map = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    const diff = target - arr[i];
+    if (map.has(diff)) {
+      return [map.get(diff), i];
+    }
+    map.set(arr[i], i);
+  }
+
+  return [];
+};
+
+// console.log(locateSumPair([2, 7, 11, 15], 9)); // [0,1]
