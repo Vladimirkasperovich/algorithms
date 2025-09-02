@@ -1357,3 +1357,17 @@ function concatNonExpiredValues(data) {
 //     { value: 'abx2', order: 3, expired: false },
 //   ]),
 // );
+
+function flattenNestedArray(array) {
+  const result = [];
+  array.forEach((item) => {
+    if (Array.isArray(item)) {
+      result.push(...flattenNestedArray(item));
+    } else {
+      result.push(item);
+    }
+  });
+  return result;
+}
+
+// console.log(flattenNestedArray([[1], [[2, 3]], [[[[[4]]]]]])); // -> [1, 2, 3, 4]
