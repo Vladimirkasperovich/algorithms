@@ -1406,3 +1406,28 @@ const getTreeValues = (tree) => {
 //     ],
 //   }),
 // );
+
+/**
+ _Функция объединяет объекты, сохраняя только первые уникальные ключи.
+ Значения из последующих объектов игнорируются, если ключ уже существует.
+ Аналог { ...obj1, ...obj2 },
+ но с обратным приоритетом (не перезаписывает существующие ключи).
+ */
+
+function mergeUniqueFirstKeys(obj) {
+  // Ваш код здесь
+  const result = {};
+  obj.forEach((item) => {
+    for (const key in item) {
+      if (!result[key]) {
+        result[key] = item[key];
+      }
+    }
+  });
+  return result;
+}
+
+// console.log(mergeUniqueFirstKeys([
+//   { foo: 5, bar: 6 },
+//   { foo: 13, baz: -1 },
+// ]));
