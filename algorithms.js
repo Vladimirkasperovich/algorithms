@@ -1562,3 +1562,33 @@ const invertCase = (str) => {
 
 // console.log(invertCase('Hello, World!')); // hELLO, wORLD!
 // console.log(invertCase('I loVe JS')); // i LOvE js
+
+/*
+Напишите функцию, которая будет возвращать количество букв и цифр, не зависимо от регистра,
+которые встречаются во входной строке более одного раза.
+Можно предположить, что входная строка содержит только буквы алфавита (как прописные,
+так и строчные) и числовые цифры.
+Например:
+"abcde" => 0 // все буквы уникальны
+"aabbcde" => 2 // a и b задублированы
+"aabBcde" => 2 // от регистра не зависит
+"indivisibiity" => 1 // количество повторений не важно, как и то, что повторы идут подряд
+*/
+
+function countDuplicateCharacters(str) {
+  const map = new Map();
+  for (const char of str.toLowerCase()) {
+    map.set(char, (map.get(char) || 0) + 1);
+  }
+
+  let duplicateCount = 0;
+  for (const count of map.values()) {
+    if (count > 1) duplicateCount++;
+  }
+  return duplicateCount;
+}
+
+// console.log(countDuplicateCharacters('abcde'));
+// console.log(countDuplicateCharacters('aabbcde'));
+// console.log(countDuplicateCharacters('aabBcde'));
+// console.log(countDuplicateCharacters('indivisibiity'));
