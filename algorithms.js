@@ -1544,3 +1544,21 @@ function includes(value, tree) {
 // console.log(includes(6, tree));
 // console.log(includes(7, tree));
 // console.log(includes(77, tree)); // false
+
+/*
+Реализуйте функцию, которая меняет в строке регистр каждой буквы на противоположный.
+Функция должна возвращать полученный результат
+*/
+
+const invertCase = (str) => {
+  // Ваш код здесь
+  return str
+    .split('')
+    .map((char) =>
+      char.toUpperCase() === char ? char.toLowerCase() : char.toUpperCase(),
+    )
+    .join('');
+};
+
+// console.log(invertCase('Hello, World!')); // hELLO, wORLD!
+// console.log(invertCase('I loVe JS')); // i LOvE js
