@@ -1592,3 +1592,27 @@ function countDuplicateCharacters(str) {
 // console.log(countDuplicateCharacters('aabbcde'));
 // console.log(countDuplicateCharacters('aabBcde'));
 // console.log(countDuplicateCharacters('indivisibiity'));
+
+function isUnique(string) {
+  return [...new Set(string)].length === string.length;
+}
+
+// console.log(isUnique('abcdef')); // -> true
+// console.log(isUnique('1234567')); // -> true
+// console.log(isUnique('abcABC')); // -> true
+// console.log(isUnique('abcadef')); // -> false
+
+function removeDupes(str) {
+  const map = new Map();
+  for (const char of str.toLowerCase()) {
+    if (!map.has(char)) {
+      map.set(char, char);
+    }
+  }
+  return [...map.keys()].join('');
+}
+
+// console.log(removeDupes('abcd')); // -> 'abcd'
+// console.log(removeDupes('aabbccdd')); // -> 'abcd'
+// console.log(removeDupes('abcddbca')); // -> 'abcd'
+// console.log(removeDupes('abababcdcdcd')); // -> 'abcd'
