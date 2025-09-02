@@ -1371,3 +1371,38 @@ function flattenNestedArray(array) {
 }
 
 // console.log(flattenNestedArray([[1], [[2, 3]], [[[[[4]]]]]])); // -> [1, 2, 3, 4]
+
+/*
+Дана структура данных в виде дерева
+Необходимо написать функцию, возвращающую значения всех вершин дерева:
+getTreeValues(tree); // => [1, 2, 3, 4, 5, 6, 7]
+*/
+
+const getTreeValues = (tree) => {
+  const result = [];
+  if (tree.value) {
+    result.push(tree.value);
+  }
+  if (tree.children && Array.isArray(tree.children)) {
+    for (const child of tree.children) {
+      result.push(...getTreeValues(child));
+    }
+  }
+  return result;
+};
+
+// console.log(
+//   getTreeValues({
+//     value: 1,
+//     children: [
+//       {
+//         value: 2,
+//         children: [{ value: 4 }, { value: 5 }],
+//       },
+//       {
+//         value: 3,
+//         children: [{ value: 6 }, { value: 7 }],
+//       },
+//     ],
+//   }),
+// );
