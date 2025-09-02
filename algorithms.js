@@ -1431,3 +1431,51 @@ function mergeUniqueFirstKeys(obj) {
 //   { foo: 5, bar: 6 },
 //   { foo: 13, baz: -1 },
 // ]));
+
+// Функция `optionalChaining` проверяет наличие заданного пути
+// и свойства в объекте и возвращает значение этого свойства,
+// если оно существует. Если свойство или путь не существует,
+// возвращается значение `undefined`.
+
+function optionalChaining(obj, path) {
+  if (!path.length) return obj;
+  const arr = path.split('.');
+  let result = obj;
+  for (const item of arr) {
+    if (result[item] !== undefined) {
+      result = result[item];
+    } else {
+      return undefined;
+    }
+  }
+  return result;
+}
+
+// console.log(
+//   optionalChaining(
+//     {
+//       a: {
+//         b: {
+//           c: {
+//             d: 'Привет!',
+//           },
+//         },
+//       },
+//     },
+//     'a.b.c',
+//   ),
+// ); // Ответ = { d: 'Привет' }
+// console.log(
+//   optionalChaining(
+//     {
+//       a: {
+//         b: {
+//           c: {
+//             d: 'Привет!',
+//           },
+//         },
+//       },
+//     },
+//     'a.b.c.d',
+//   ),
+// ); // Ответ = Привет
