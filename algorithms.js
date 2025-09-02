@@ -1616,3 +1616,20 @@ function removeDupes(str) {
 // console.log(removeDupes('aabbccdd')); // -> 'abcd'
 // console.log(removeDupes('abcddbca')); // -> 'abcd'
 // console.log(removeDupes('abababcdcdcd')); // -> 'abcd'
+
+/**
+ * Функция должна преобразовывать строку в формат camelCase
+ * @param str {string}
+ */
+
+function camelCase(str) {
+  const filtered = str
+    .toLowerCase()
+    .replace(/[^a-z]/, ' ')
+    .split(' ');
+
+  return filtered.map((word) => word[0].toUpperCase() + word.slice(1)).join('');
+}
+
+// console.log(camelCase('mY-comPonent name')); //'MyComponentName'
+// console.log(camelCase('mY-comPonent name'));
