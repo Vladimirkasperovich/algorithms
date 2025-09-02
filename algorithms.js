@@ -1259,3 +1259,44 @@ const locateSumPair = (arr, target) => {
 };
 
 // console.log(locateSumPair([2, 7, 11, 15], 9)); // [0,1]
+
+// Напишите функцию которая возвращает массив значение свойств объекта
+
+const getObjectValuesArray = (obj) => {
+  return Object.values(obj);
+};
+
+// console.log(
+//   getObjectValuesArray({
+//     a: 1,
+//     b: 3,
+//     c: 2,
+//   }),
+// );
+
+// Вызов функции - groupBy(persons, "age")
+
+const groupBy = (arr, prop) => {
+  const map = new Map();
+  arr.forEach((person) => {
+    const key = person[prop];
+    if (!map.has(key)) {
+      map.set(key, [person]);
+    } else {
+      map.get(key).push(person);
+    }
+  });
+
+  return map;
+};
+
+// console.log(groupBy([
+//   { name: 'Alex', age: 20 },
+//   { name: 'Lena', age: 25 },
+//   { name: 'Pavel', age: 20 },
+// ], 'age'));
+
+// Результат {
+//   20: [{ name: 'Alex', age: 20 }, { name: 'Pavel', age: 20 } ],
+//   25: [{ name: 'Lena', age: 25 }]
+// }
