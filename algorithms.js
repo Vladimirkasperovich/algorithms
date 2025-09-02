@@ -1338,3 +1338,22 @@ const groupUsersByGender = (users) => {
 //     },
 //   ]),
 // );
+
+// сконкатенировать по value, expired не должны быть true, порядок отсортирован по order
+
+function concatNonExpiredValues(data) {
+  // Ваш код здесь
+  return data
+    .filter((item) => !item.expired)
+    .sort((a, b) => a.order - b.order)
+    .reduce((acc, cur) => acc + cur.value, '');
+}
+
+// console.log(
+//   concatNonExpiredValues([
+//     { value: 'abcd', order: 4, expired: false },
+//     { value: 'qwer', order: 2, expired: true },
+//     { value: 'xyz1', order: 1, expired: false },
+//     { value: 'abx2', order: 3, expired: false },
+//   ]),
+// );
