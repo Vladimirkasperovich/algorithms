@@ -1857,3 +1857,18 @@ function concatNonExpiredValues1(data) {
 }
 
 // console.log(concatNonExpiredValues1(input));
+
+function flattenNestedArray1(array) {
+  // Ваш код здесь
+  const result = [];
+  for (const item of array) {
+    if (Array.isArray(item)) {
+      result.push(...flattenNestedArray1(item));
+    } else {
+      result.push(item);
+    }
+  }
+  return result;
+}
+
+// console.log(flattenNestedArray1([[1], [[2, 3]], [[[[[4]]]]]])); // -> [1, 2, 3, 4]
