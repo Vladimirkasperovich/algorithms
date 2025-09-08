@@ -1688,3 +1688,16 @@ function serializeElementFrequencies1(arr) {
 }
 
 // console.log(serializeElementFrequencies1([1, 2, 3, 4, 4])); // {'1:1, 2:1, 3:1, 4:2'}
+
+function splitIntoChunks1(arr, num) {
+  // Ваш код здесь
+  const result = [];
+  for (let i = 0; i < arr.length; i += num) {
+    result.push(arr.slice(i, i + num));
+  }
+  return result;
+}
+
+// console.log(splitIntoChunks1([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)); // [[1,2,3],[4,5,6],[7,8,9]]
+// console.log(splitIntoChunks1([1, 2, 3, 4, 5, 6, 7, 8, 9], 4)); // [[1,2,3,4],[5,6,7,8],[9]]
+// console.log(splitIntoChunks1([1, 2, 3, 4, 5, 6, 7, 8, 9], 2)); // [[1,2],[3,4],[5,6],[7,8],[9]]
