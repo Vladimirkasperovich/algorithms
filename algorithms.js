@@ -1909,3 +1909,11 @@ const getTreeValues1 = (obj) => {
 };
 
 // console.log(getTreeValues1(tree1));
+
+const getVowelsLength = (str) => {
+  return str
+    .toLowerCase()
+    .split('')
+    .filter((elem) => /[aioeuy]/.test(elem)).length;
+};
+// console.log(getVowelsLength('akksja'));
