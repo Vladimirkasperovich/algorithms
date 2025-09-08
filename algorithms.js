@@ -1701,3 +1701,19 @@ function splitIntoChunks1(arr, num) {
 // console.log(splitIntoChunks1([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)); // [[1,2,3],[4,5,6],[7,8,9]]
 // console.log(splitIntoChunks1([1, 2, 3, 4, 5, 6, 7, 8, 9], 4)); // [[1,2,3,4],[5,6,7,8],[9]]
 // console.log(splitIntoChunks1([1, 2, 3, 4, 5, 6, 7, 8, 9], 2)); // [[1,2],[3,4],[5,6],[7,8],[9]]
+
+// вернуть массив уникальных чисел
+
+const getUniqDigits1 = (arr) => {
+  // Ваш код здесь
+  const filteredArr = arr.filter((item) => !isNaN(item));
+  const map = new Map();
+  for (const item of filteredArr) {
+    const num = Number(item);
+    map.set(num, (map.get(num) || 0) + 1);
+  }
+
+  return [...map.keys()].sort((a, b) => a - b);
+};
+
+// console.log(getUniqDigits1(['a', 0, 4, '4', '0', 5, 'd']));
