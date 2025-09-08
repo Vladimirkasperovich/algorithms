@@ -1679,3 +1679,12 @@ function delayedArrayLogging() {
 }
 
 // console.log(delayedArrayLogging());
+
+function serializeElementFrequencies1(arr) {
+  return arr.reduce((acc, cur) => {
+    acc[cur] = (acc[cur] || 0) + 1;
+    return acc;
+  }, {});
+}
+
+// console.log(serializeElementFrequencies1([1, 2, 3, 4, 4])); // {'1:1, 2:1, 3:1, 4:2'}
