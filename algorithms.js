@@ -1633,3 +1633,26 @@ function camelCase(str) {
 
 // console.log(camelCase('mY-comPonent name')); //'MyComponentName'
 // console.log(camelCase('mY-comPonent name'));
+
+// Есть задача функция принимает массив чисел,
+// необхоимо вернуть массив с наибольшими числами в порядке убывания,
+// например принимает[1, 2, 5, 3, 4, 6, 4,] - вернуть[6, 5]
+
+const getTopTwoDescending = (data) => {
+  // Ваш код здесь
+  let first = -Infinity;
+  let second = -Infinity;
+
+  for (const num of data) {
+    if (num > first) {
+      second = first;
+      first = num;
+    } else if (num > second) {
+      second = num;
+    }
+  }
+
+  return [first, second];
+};
+
+// console.log(getTopTwoDescending([1, 2, 5, 3, 4, 6, 4]));
