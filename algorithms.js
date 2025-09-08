@@ -1735,3 +1735,40 @@ function highestFrequency1(array) {
 // console.log(highestFrequency1(['a', 'b', 'c', 'c', 'd', 'e'])); // -> c
 // console.log(highestFrequency1(['abc', 'def', 'abc', 'def', 'abc'])); // -> abc
 // console.log(highestFrequency1(['abc', 'def'])); // -> abc
+
+/*
+Задача: Создать класс, в котором 2 статических метода min, max по аналогии с Math.min, Math.max; Ограничения: запрещено инстанцировать данный класс - должно выбрасываться исключение в рантайме и дизайн тайме (ошибка в консоль и ошибка тайпскрипта)
+*/
+
+class StaticMath {
+  // Ваш код здесь
+  constructor() {
+    throw new Error('StaticMath cannot be instantiated');
+  }
+
+  static min = function (...args) {
+    let minNum = args[0];
+    for (let i = 0; i < args.length; i++) {
+      const num = args[i];
+      if (num < minNum) {
+        minNum = num;
+      }
+    }
+    return minNum;
+  };
+  static max = function (...args) {
+    let maxNum = args[0];
+    for (let i = 0; i < args.length; i++) {
+      const num = args[i];
+      if (num > maxNum) {
+        maxNum = num;
+      }
+    }
+    return maxNum;
+  };
+}
+
+// const noMath = new StaticMath();
+
+// console.log(StaticMath.min(3, 4, 1, 8)); // 1
+// console.log(StaticMath.max(3, 4, 1, 8)); // 8
