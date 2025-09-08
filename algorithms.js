@@ -1801,3 +1801,40 @@ function groupBy1(arr, prop) {
 //   20: [{ name: 'Alex', age: 20 }, { name: 'Pavel', age: 20 } ],
 //   25: [{ name: 'Lena', age: 25 }]
 // }
+
+// Из исходного массива сделать объект, ключами которого будут все встречающиеся gender,
+// а значениями массив объектов юзеров
+
+// const users = [
+//   {
+//     id: 1,
+//     name: 'Виктория',
+//     gender: 'female',
+//   },
+//   {
+//     id: 2,
+//     name: 'Андрей',
+//     gender: 'male',
+//   },
+//   {
+//     id: 3,
+//     name: 'Александр',
+//     gender: 'male',
+//   },
+// ];
+
+function groupUsersByGender1(users) {
+  // Ваш код здесь
+  const usersGroup = {};
+  for (const user of users) {
+    const key = user.gender;
+    if (!usersGroup[key]) {
+      usersGroup[key] = [user];
+    } else {
+      usersGroup[key].push(user);
+    }
+  }
+  return usersGroup;
+}
+
+// console.log(groupUsersByGender1(users));
