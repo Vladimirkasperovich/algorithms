@@ -1159,14 +1159,14 @@ function sortOperations(operations) {
 // 2. Размер максимальной зарплаты
 // 3. Статистика по каждому отделу: сумма затрат, количество сотрудников, средняя з/п
 
-const arr = [
-  { name: 'Вася', salary: 10000, department: 'Frontend' },
-  { name: 'Петя', salary: 12000, department: 'Backend' },
-  { name: 'Дима', salary: 10500, department: 'Frontend' },
-  { name: 'Оля', salary: 15000, department: 'Backend' },
-  { name: 'Саша', salary: 8000, department: 'Frontend' },
-  { name: 'Олег', salary: 9000, department: 'Testing' },
-];
+// const arr = [
+//   { name: 'Вася', salary: 10000, department: 'Frontend' },
+//   { name: 'Петя', salary: 12000, department: 'Backend' },
+//   { name: 'Дима', salary: 10500, department: 'Frontend' },
+//   { name: 'Оля', salary: 15000, department: 'Backend' },
+//   { name: 'Саша', salary: 8000, department: 'Frontend' },
+//   { name: 'Олег', salary: 9000, department: 'Testing' },
+// ];
 
 const findMaxSalary = (data) => {
   const map = new Map();
@@ -1717,3 +1717,21 @@ const getUniqDigits1 = (arr) => {
 };
 
 // console.log(getUniqDigits1(['a', 0, 4, '4', '0', 5, 'd']));
+
+/*
+Напишите функцию, которая принимает массив строк и возвращает самую частовстречающуюся строку в этом массиве. Если таких строк несколько, то нужно вернуть первую, идя слева на право.
+*/
+
+function highestFrequency1(array) {
+  const frequency = {};
+  for (const str of array) {
+    frequency[str] = (frequency[str] || 0) + 1;
+  }
+  const max = Math.max(...Object.values(frequency));
+  const maxItem = Object.entries(frequency).find((item) => item[1] === max)[0];
+  return maxItem ? maxItem : null;
+}
+
+// console.log(highestFrequency1(['a', 'b', 'c', 'c', 'd', 'e'])); // -> c
+// console.log(highestFrequency1(['abc', 'def', 'abc', 'def', 'abc'])); // -> abc
+// console.log(highestFrequency1(['abc', 'def'])); // -> abc
