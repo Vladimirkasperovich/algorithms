@@ -1917,3 +1917,21 @@ const getVowelsLength = (str) => {
     .filter((elem) => /[aioeuy]/.test(elem)).length;
 };
 // console.log(getVowelsLength('akksja'));
+const obj = {
+  value: {
+    bar: 100,
+  },
+};
+const getPath = (obj, path) => {
+  const pathArray = path.split('.');
+  let temp = obj;
+  for (const item of pathArray) {
+    if (temp[item]) {
+      temp = temp[item];
+    } else {
+      return undefined;
+    }
+  }
+  return temp;
+};
+// console.log(getPath(obj, 'value.bar')); // 100
