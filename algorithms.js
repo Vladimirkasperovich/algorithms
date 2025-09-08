@@ -1772,3 +1772,32 @@ class StaticMath {
 
 // console.log(StaticMath.min(3, 4, 1, 8)); // 1
 // console.log(StaticMath.max(3, 4, 1, 8)); // 8
+
+// Вызов функции - groupBy(persons, "age")
+
+// const persons = [
+//   { name: 'Alex', age: 20 },
+//   { name: 'Lena', age: 25 },
+//   { name: 'Pavel', age: 20 },
+// ];
+
+function groupBy1(arr, prop) {
+  // Ваш код здесь
+  const group = {};
+  for (const item of arr) {
+    const key = item[prop];
+    if (!group[key]) {
+      group[key] = [item];
+    } else {
+      group[key].push(item);
+    }
+  }
+  return group;
+}
+
+// console.log(groupBy1(persons, 'age'));
+
+// Результат {
+//   20: [{ name: 'Alex', age: 20 }, { name: 'Pavel', age: 20 } ],
+//   25: [{ name: 'Lena', age: 25 }]
+// }
