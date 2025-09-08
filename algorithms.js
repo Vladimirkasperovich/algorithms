@@ -1838,3 +1838,22 @@ function groupUsersByGender1(users) {
 }
 
 // console.log(groupUsersByGender1(users));
+
+// сконкатенировать по value, expired не должны быть true, порядок отсортирован по order
+
+const input = [
+  { value: 'abcd', order: 4, expired: false },
+  { value: 'qwer', order: 2, expired: true },
+  { value: 'xyz1', order: 1, expired: false },
+  { value: 'abx2', order: 3, expired: false },
+];
+
+function concatNonExpiredValues1(data) {
+  const filteredData = data.filter((item) => !item.expired);
+  const sortedData = [...filteredData].sort((a, b) => a.order - b.order);
+  return [
+    ...new Set(sortedData.reduce((acc, cur) => acc + cur.value, '')),
+  ].join('');
+}
+
+// console.log(concatNonExpiredValues1(input));
