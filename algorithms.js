@@ -214,3 +214,20 @@ const reverseNumber = (num) => {
 // console.log(reverseNumber(-456)); // -654
 // console.log(reverseNumber(1000)); // 1
 // console.log(reverseNumber(0)); // 0
+const findMinMax = (array) => {
+  let min = array[0];
+  let max = array[0];
+
+  for (let i = 1; i < array.length; i++) {
+    const currentNum = array[i];
+    if (currentNum > max) {
+      max = currentNum;
+    } else if (currentNum < min) {
+      min = currentNum;
+    }
+  }
+  return { min, max };
+};
+// console.log(findMinMax([4, 3, 5, 3, 2])); // {min: 2, max: 5}
+// console.log(findMinMax([4, 4, 7, 2, 1, 10])); // {min: 1, max: 10}
+// console.log(findMinMax([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])); // {min: 1, max: 10}
