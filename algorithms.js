@@ -187,3 +187,13 @@ function flattenArray(arr) {
 
 // const nestedArray = [1, [2, [3, 4], 5], 6];
 // console.log(flattenArray(nestedArray)); // [1, 2, 3, 4, 5, 6]
+const sumRange = (num1, num2) => {
+  let sum = 0;
+  for (let i = num1; i <= num2; i++) {
+    sum += i;
+  }
+  return sum;
+};
+// console.log(sumRange(1, 5)); // 15
+// console.log(sumRange(0, 10)); // 55
+// console.log(sumRange(-3, 3)); // 0
