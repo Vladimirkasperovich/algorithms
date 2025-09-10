@@ -172,3 +172,18 @@ const isAnagram = (strA, strB) => {
 
 // console.log(isAnagram('finder', 'Friend')); // true
 // console.log(isAnagram('hello', 'bye')); // false
+
+function flattenArray(arr) {
+  const result = [];
+  arr.forEach((num) => {
+    if (Array.isArray(num)) {
+      result.push(...flattenArray(num));
+    } else {
+      result.push(num);
+    }
+  });
+  return result;
+}
+
+// const nestedArray = [1, [2, [3, 4], 5], 6];
+// console.log(flattenArray(nestedArray)); // [1, 2, 3, 4, 5, 6]
