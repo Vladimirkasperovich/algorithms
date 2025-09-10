@@ -264,3 +264,19 @@ const isPalindrome = (str) => {
 // console.log(isPalindrome("No 'x' in Nixon")); // true
 // console.log(isPalindrome('Was it a car or a cat I saw?')); // true
 // console.log(isPalindrome('Eva, I see bees in a cave')); // false
+const firstNonRepeatingChar = (str) => {
+  const seen = new Map();
+  for (const char of str.toLowerCase()) {
+    seen.set(char, (seen.get(char) || 0) + 1);
+  }
+  for (const char of str) {
+    if (seen.get(char) === 1) {
+      return char;
+    }
+  }
+  return null;
+};
+
+// console.log(firstNonRepeatingChar('swiss')); // "w"
+// console.log(firstNonRepeatingChar('aabbcc')); // null
+// console.log(firstNonRepeatingChar('javascript')); // "j"
