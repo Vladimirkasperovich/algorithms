@@ -408,3 +408,30 @@ const isValidParentheses = (str) => {
 // console.log(isValidParentheses('(]')); // false
 // console.log(isValidParentheses('([)]')); // false
 // console.log(isValidParentheses('{[]}')); // true
+
+const calculator = (a, b, operation) => {
+  const numA = Number(a);
+  const numB = Number(b);
+  if (isNaN(numA) || isNaN(numB)) {
+    return 'Неверная операция';
+  }
+  switch (operation) {
+    case '+':
+      return numA + numB;
+    case '-':
+      return numA - numB;
+    case '*':
+      return numA * numB;
+    case '/':
+      return numB === 0 ? 0 : numA / numB;
+    default:
+      return 'Неверная операция';
+  }
+};
+// console.log(calculator(30, 5, '*')); // 150
+// console.log(calculator(30, '5', '*')); // 150
+// console.log(calculator('Hello', 'world', '*')); // "Неверная операция"
+// console.log(calculator(30, 8, '/')); // 3.75
+// console.log(calculator(-10, 0, '/')); // 0
+// console.log(calculator('abc', 5, '+')); // "Неверная операция"
+// console.log(calculator(30, 5, 'X')); // "Неверная операция"
