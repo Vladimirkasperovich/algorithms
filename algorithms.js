@@ -197,3 +197,20 @@ const sumRange = (num1, num2) => {
 // console.log(sumRange(1, 5)); // 15
 // console.log(sumRange(0, 10)); // 55
 // console.log(sumRange(-3, 3)); // 0
+
+const reverseNumber = (num) => {
+  if (!num) return num;
+  const str = num.toString();
+  let result = str.startsWith('-') ? '-' : '';
+  for (let i = str.length - 1; i >= 0; i--) {
+    const current = str[i];
+    if (/\d/.test(current)) {
+      result += current;
+    }
+  }
+  return +result;
+};
+// console.log(reverseNumber(123)); // 321
+// console.log(reverseNumber(-456)); // -654
+// console.log(reverseNumber(1000)); // 1
+// console.log(reverseNumber(0)); // 0
