@@ -249,3 +249,18 @@ const findPairs = (array, target) => {
 // console.log(findPairs([2, 4, 3, 7, 8, 1], 9)); // [[7, 2], [8, 1]]
 // console.log(findPairs([1, 2, 3, 4, 5], 10)); // []
 // console.log(findPairs([0, -1, -2, 2, 1], 0)); // [[-1, 1], [-2, 2]]
+
+const isPalindrome = (str) => {
+  const cleanStr = str.toLowerCase().replace(/[^a-z]/g, '');
+  const reversedStr = str
+    .toLowerCase()
+    .replace(/[^a-z]/g, '')
+    .split('')
+    .reverse()
+    .join('');
+  return cleanStr === reversedStr;
+};
+// console.log(isPalindrome('A man, a plan, a canal, Panama!')); // true
+// console.log(isPalindrome("No 'x' in Nixon")); // true
+// console.log(isPalindrome('Was it a car or a cat I saw?')); // true
+// console.log(isPalindrome('Eva, I see bees in a cave')); // false
