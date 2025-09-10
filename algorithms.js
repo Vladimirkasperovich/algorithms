@@ -296,3 +296,29 @@ const countVowelsAndConsonants = (str) => {
 // console.log(countVowelsAndConsonants('hello')); // { vowels: 2, consonants: 3 }
 // console.log(countVowelsAndConsonants('JavaScript')); // { vowels: 3, consonants: 7 }
 // console.log(countVowelsAndConsonants('12345')); // { vowels: 0, consonants: 0 }
+
+/*Необходимо создать функцию fetchRetryer(), которая будет выполнять запрос на определенный API и повторять его до 5 раз, пока не получит ответ (статус 200). Если после 5 повторов сервер не отвечает - возвращаем ошибку.*/
+const fetchRetryer = (url, count = 5) => {
+  return fetch(url)
+    .then((data) => {
+      if (data.status !== 200) {
+        throw new Error('Something went wrong');
+      }
+      return data;
+    })
+    .catch((err) => {
+      if (count > 0) {
+        return fetchRetryer(url, count - 1);
+      }
+      throw err;
+    });
+};
+
+// fetchRetryer('https://jsonplaceholder.typicode.com/posts/1')
+//   .then((res) => res.json())
+//   .then((data) => console.log('Success:', data))
+//   .catch((err) => console.error('Failed:', err.message));
+//
+// fetchRetryer('https://invalid-url.example')
+//   .then((res) => res.json())
+//   .catch((err) => console.error('Failed after retries:', err.message));
