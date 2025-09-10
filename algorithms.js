@@ -386,3 +386,25 @@ const asyncLimit = (callback, timeLimit) => {
 //
 // console.log(asyncLimit(fn2, 100)(1, 2));
 // console.log(asyncLimit(fn2, 150)(1, 2));
+
+const isValidParentheses = (str) => {
+  const map = { '{': '}', '(': ')', '[': ']' };
+  const stack = [];
+  for (const bracket of str) {
+    if (map[bracket]) {
+      stack.push(bracket);
+    } else {
+      const last = stack.pop();
+      if (map[last] !== bracket) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
+};
+
+// console.log(isValidParentheses('()[]{}')); // true
+// console.log(isValidParentheses('([{}])')); // true
+// console.log(isValidParentheses('(]')); // false
+// console.log(isValidParentheses('([)]')); // false
+// console.log(isValidParentheses('{[]}')); // true
