@@ -163,3 +163,12 @@ const flattenObject = (obj, keys = '') => {
 // const flattenedObj = flattenObject(obj);
 // console.log(flattenedObj);
 // Ожидаемый результат: { 'a.b.c': 1, 'a.b.d': 2, 'a.e': 3, 'f': 4 } || { "f": 4, "a.e": 3, "a.b.c": 1, "a.b.d": 2 }
+
+const isAnagram = (strA, strB) => {
+  const firstStr = strA.toLowerCase().split('').sort().join('');
+  const secondStr = strB.toLowerCase().split('').sort().join('');
+  return firstStr === secondStr;
+};
+
+// console.log(isAnagram('finder', 'Friend')); // true
+// console.log(isAnagram('hello', 'bye')); // false
