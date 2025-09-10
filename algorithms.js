@@ -357,21 +357,32 @@ const customPromiseAll = (array) => {
 //   .catch((error) => {
 //     console.error(error); // Output: Error occurred
 //   });
-
-const fn = async (n) => {
-  await new Promise((res) => setTimeout(res, 100));
-
-  return n * n;
+const asyncLimit = (callback, timeLimit) => {
+  return async (...args) => {
+    try {
+      const res = await Promise.race([
+        callback(...args),
+        new Promise((_, reject) => setTimeout(reject, timeLimit)),
+      ]);
+      return Promise.resolve(res);
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  };
 };
-
-console.log(asyncLimit(fn, 50)(5)); // rejected превышен лимит
-console.log(asyncLimit(fn, 150)(5)); // resolve 25
-
-const fn2 = async (a, b) => {
-  await new Promise((res) => setTimeout(res, 120));
-
-  return a + b;
-};
-
-console.log(asyncLimit(fn2, 100)(1, 2));
-console.log(asyncLimit(fn2, 150)(1, 2));
+// const fn = async (n) => {
+//   await new Promise((res) => setTimeout(res, 100));
+//   return n * n;
+// };
+//
+// console.log(asyncLimit(fn, 50)(5)); // rejected превышен лимит
+// console.log(asyncLimit(fn, 150)(5)); // resolve 25
+//
+// const fn2 = async (a, b) => {
+//   await new Promise((res) => setTimeout(res, 120));
+//
+//   return a + b;
+// };
+//
+// console.log(asyncLimit(fn2, 100)(1, 2));
+// console.log(asyncLimit(fn2, 150)(1, 2));
