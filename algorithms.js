@@ -231,3 +231,21 @@ const findMinMax = (array) => {
 // console.log(findMinMax([4, 3, 5, 3, 2])); // {min: 2, max: 5}
 // console.log(findMinMax([4, 4, 7, 2, 1, 10])); // {min: 1, max: 10}
 // console.log(findMinMax([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])); // {min: 1, max: 10}
+
+const findPairs = (array, target) => {
+  const result = [];
+  const seenNum = {};
+  for (const item of array) {
+    const complement = target - item;
+    if (seenNum[complement]) {
+      result.push([complement, item]);
+    } else {
+      seenNum[item] = complement;
+    }
+  }
+  return result;
+};
+
+// console.log(findPairs([2, 4, 3, 7, 8, 1], 9)); // [[7, 2], [8, 1]]
+// console.log(findPairs([1, 2, 3, 4, 5], 10)); // []
+// console.log(findPairs([0, -1, -2, 2, 1], 0)); // [[-1, 1], [-2, 2]]
