@@ -280,3 +280,19 @@ const firstNonRepeatingChar = (str) => {
 // console.log(firstNonRepeatingChar('swiss')); // "w"
 // console.log(firstNonRepeatingChar('aabbcc')); // null
 // console.log(firstNonRepeatingChar('javascript')); // "j"
+
+const countVowelsAndConsonants = (str) => {
+  let vowels = 0;
+  let consonants = 0;
+  for (const char of str.toLowerCase()) {
+    if (/[aeiou]/.test(char)) {
+      vowels += 1;
+    } else if (/[a-z]/.test(char)) {
+      consonants += 1;
+    }
+  }
+  return { vowels, consonants };
+};
+// console.log(countVowelsAndConsonants('hello')); // { vowels: 2, consonants: 3 }
+// console.log(countVowelsAndConsonants('JavaScript')); // { vowels: 3, consonants: 7 }
+// console.log(countVowelsAndConsonants('12345')); // { vowels: 0, consonants: 0 }
