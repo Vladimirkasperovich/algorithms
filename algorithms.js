@@ -322,3 +322,56 @@ const fetchRetryer = (url, count = 5) => {
 // fetchRetryer('https://invalid-url.example')
 //   .then((res) => res.json())
 //   .catch((err) => console.error('Failed after retries:', err.message));
+
+const customPromiseAll = (array) => {
+  let result = [];
+  let successCount = 0;
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < array.length; i++) {
+      Promise.resolve(array[i])
+        .then((data) => {
+          successCount += 1;
+          result[i] = data;
+          if (successCount === array.length) {
+            resolve(result);
+            return;
+          }
+        })
+        .catch(reject);
+    }
+  });
+};
+// const promise1 = Promise.resolve(1);
+// const promise2 = Promise.resolve(2);
+// const promise3 = Promise.resolve(3);
+// const promise4 = new Promise((resolve) => setTimeout(resolve, 100, 4));
+// customPromiseAll([promise1, promise2, promise3, promise4]).then((results) => {
+//   console.log(results); //[1, 2, 3, 4]
+// });
+// const promise5 = Promise.reject('Error occurred');
+//
+// customPromiseAll([promise1, promise2, promise5])
+//   .then((results) => {
+//     console.log(results);
+//   })
+//   .catch((error) => {
+//     console.error(error); // Output: Error occurred
+//   });
+
+const fn = async (n) => {
+  await new Promise((res) => setTimeout(res, 100));
+
+  return n * n;
+};
+
+console.log(asyncLimit(fn, 50)(5)); // rejected превышен лимит
+console.log(asyncLimit(fn, 150)(5)); // resolve 25
+
+const fn2 = async (a, b) => {
+  await new Promise((res) => setTimeout(res, 120));
+
+  return a + b;
+};
+
+console.log(asyncLimit(fn2, 100)(1, 2));
+console.log(asyncLimit(fn2, 150)(1, 2));
