@@ -26,3 +26,21 @@ const reverseNumber = (num) => {
 // console.log(reverseNumber(-456)); // -654
 // console.log(reverseNumber(1000)); // 1
 // console.log(reverseNumber(0)); // 0
+
+const findMinMax = (arr) => {
+  let min = arr[0];
+  let max = arr[0];
+  for (const num of arr) {
+    if (num < min) {
+      min = num;
+    } else if (num > max) {
+      max = num;
+    }
+  }
+
+  return { min, max };
+};
+// Тестовые данные
+// console.log(findMinMax([4, 3, 5, 3, 2])); // {min: 2, max: 5}
+// console.log(findMinMax([4, 4, 7, 2, 1, 10])); // {min: 1, max: 10}
+// console.log(findMinMax([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])); // {min: 1, max: 10}
