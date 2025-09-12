@@ -44,3 +44,12 @@ const findMinMax = (arr) => {
 // console.log(findMinMax([4, 3, 5, 3, 2])); // {min: 2, max: 5}
 // console.log(findMinMax([4, 4, 7, 2, 1, 10])); // {min: 1, max: 10}
 // console.log(findMinMax([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])); // {min: 1, max: 10}
+
+const secondLargest = (arr) => {
+  if ([...new Set(arr)].length === 1) return null;
+  const sorted = [...arr].sort((a, b) => b - a);
+  return sorted[1];
+};
+// console.log(secondLargest([10, 20, 4, 45, 99])); // 45
+// console.log(secondLargest([5, 5, 5])); // null
+// console.log(secondLargest([1])); // null
