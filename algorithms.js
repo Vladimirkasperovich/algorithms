@@ -342,3 +342,17 @@ Array.prototype._reduce = function (fn, initialValue) {
 // console.log([1, 2, 3, 4]._reduce((acc, num) => acc + num, 10)); // 20
 // console.log(['a', 'b', 'c']._reduce((acc, char) => acc + char)); // "abc"
 // console.log([2, 3, 4]._reduce((acc, num) => acc * num, 1)); // 24
+
+const extractDomain = (baseUrl) => {
+  try {
+    const url = new URL(baseUrl);
+    return url.host;
+  } catch (err) {
+    return null;
+  }
+};
+// Тестовые данные
+// console.log(extractDomain('https://www.google.com')); // "google.com"
+// console.log(extractDomain('http://example.org')); // "example.org"
+// console.log(extractDomain('https://sub.domain.com/path')); // "sub.domain.com"
+// console.log(extractDomain('invalid-url')); // null
