@@ -314,3 +314,20 @@ Array.prototype._filter = function (fn) {
 //   ['apple', 'banana', 'cherry']._filter((fruit) => fruit.includes('a')),
 // ); // ["apple", "banana"]
 // console.log([10, 20, 30]._filter((num, index) => index % 2 === 0)); // [10, 30]
+
+Array.prototype._map = function (fn) {
+  const result = [];
+  this.forEach((item, index, arr) => {
+    result.push(fn(item, index, arr));
+  });
+  return result;
+};
+// console.log([1, 2, 3]._map((n) => n * 2)); // [2, 4, 6]
+// console.log(['a', 'b', 'c']._map((letter) => letter.toUpperCase())); // ["A", "B", "C"]
+// console.log([10, 20, 30]._map((num, index) => num + index)); // [10, 21, 32]
+
+Array.prototype._reduce = function (fn) {};
+console.log([1, 2, 3, 4]._reduce((acc, num) => acc + num)); // 10
+console.log([1, 2, 3, 4]._reduce((acc, num) => acc + num, 10)); // 20
+console.log(['a', 'b', 'c']._reduce((acc, char) => acc + char)); // "abc"
+console.log([2, 3, 4]._reduce((acc, num) => acc * num, 1)); // 24
