@@ -173,3 +173,20 @@ const factorial = (n) => {
 // console.log(factorial(1)); // 1
 // console.log(factorial(2)); // 2
 // console.log(factorial(3)); // 6
+
+const flattenArray = (arr) => {
+  if (!arr.length) return [];
+  const result = [];
+  arr.forEach((item) => {
+    if (Array.isArray(item)) {
+      result.push(...flattenArray(item));
+    } else {
+      result.push(item);
+    }
+  });
+  return result;
+};
+// console.log(flattenArray([1, 2, 3])); // [1, 2, 3]
+// console.log(flattenArray([1, [2, 3], 4])); // [1, 2, 3, 4]
+// console.log(flattenArray([1, [2, [3, [4, 5]]]])); // [1, 2, 3, 4, 5]
+// console.log(flattenArray([])); // []
