@@ -326,8 +326,19 @@ Array.prototype._map = function (fn) {
 // console.log(['a', 'b', 'c']._map((letter) => letter.toUpperCase())); // ["A", "B", "C"]
 // console.log([10, 20, 30]._map((num, index) => num + index)); // [10, 21, 32]
 
-Array.prototype._reduce = function (fn) {};
-console.log([1, 2, 3, 4]._reduce((acc, num) => acc + num)); // 10
-console.log([1, 2, 3, 4]._reduce((acc, num) => acc + num, 10)); // 20
-console.log(['a', 'b', 'c']._reduce((acc, char) => acc + char)); // "abc"
-console.log([2, 3, 4]._reduce((acc, num) => acc * num, 1)); // 24
+Array.prototype._reduce = function (fn, initialValue) {
+  let accumulator;
+  if (initialValue !== undefined) {
+    accumulator = initialValue;
+  } else {
+    accumulator = this[0];
+  }
+  this.forEach((item, index, array) => {
+    accumulator = fn(accumulator, item, index, array);
+  });
+  return accumulator;
+};
+// console.log([1, 2, 3, 4]._reduce((acc, num) => acc + num)); // 10
+// console.log([1, 2, 3, 4]._reduce((acc, num) => acc + num, 10)); // 20
+// console.log(['a', 'b', 'c']._reduce((acc, char) => acc + char)); // "abc"
+// console.log([2, 3, 4]._reduce((acc, num) => acc * num, 1)); // 24
