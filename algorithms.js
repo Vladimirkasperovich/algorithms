@@ -164,3 +164,12 @@ const countVowelsAndConsonants = (str) => {
 // console.log(countVowelsAndConsonants('hello')); // { vowels: 2, consonants: 3 }
 // console.log(countVowelsAndConsonants('JavaScript')); // { vowels: 3, consonants: 7 }
 // console.log(countVowelsAndConsonants('12345')); // { vowels: 0, consonants: 0 }
+
+const factorial = (n) => {
+  if (n <= 1) return 1;
+  return n * factorial(n - 1);
+};
+// console.log(factorial(0)); // 1
+// console.log(factorial(1)); // 1
+// console.log(factorial(2)); // 2
+// console.log(factorial(3)); // 6
