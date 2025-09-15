@@ -134,3 +134,15 @@ const isAnagram = (str1, str2) => {
 // console.log(isAnagram('hello', 'bye')); // false
 // console.log(isAnagram('listen', 'silent')); // true
 // console.log(isAnagram('rail safety', 'fairy tales'));
+
+const firstNonRepeatingChar = (str) => {
+  const seen = new Map();
+  for (const char of str) {
+    seen.set(char, (seen.get(char) || 0) + 1);
+  }
+  const fondedFirstChar = [...seen.entries()].find((item) => item[1] === 1);
+  return fondedFirstChar ? fondedFirstChar[0] : null;
+};
+// console.log(firstNonRepeatingChar('swiss')); // "w"
+// console.log(firstNonRepeatingChar('aabbcc')); // null
+// console.log(firstNonRepeatingChar('javascript')); // "j"
