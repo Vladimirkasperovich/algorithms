@@ -298,3 +298,19 @@ const asyncLimit = (cb, timeLimit) => {
 //
 // console.log(asyncLimit(fn2, 100)(1, 2));
 // console.log(asyncLimit(fn2, 150)(1, 2));
+
+Array.prototype._filter = function (fn) {
+  const result = [];
+  this.forEach((item, index) => {
+    if (fn(item, index, this)) {
+      result.push(item);
+    }
+  });
+  return result;
+};
+
+// console.log([1, 2, 3, 4, 5]._filter((n) => n % 2 === 0)); // [2, 4]
+// console.log(
+//   ['apple', 'banana', 'cherry']._filter((fruit) => fruit.includes('a')),
+// ); // ["apple", "banana"]
+// console.log([10, 20, 30]._filter((num, index) => index % 2 === 0)); // [10, 30]
