@@ -199,3 +199,24 @@ const fibonacci = (n) => {
 // console.log(fibonacci(0)); // 0
 // console.log(fibonacci(1)); // 1
 // console.log(fibonacci(2)); // 1
+const fetchRetryer2 = async (url, count = 5) => {
+  try {
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error('Fetch error');
+    return Promise.resolve(resp);
+  } catch (e) {
+    if (count > 0) {
+      return fetchRetryer2(url, count - 1);
+    } else {
+      return Promise.reject(e);
+    }
+  }
+};
+// fetchRetryer2('https://jsonplaceholder.typicode.com/posts/1')
+//   .then((res) => res.json())
+//   .then((data) => console.log('Success:', data))
+//   .catch((err) => console.error('Failed:', err.message));
+//
+// fetchRetryer2('https://invalid-url.example')
+//   .then((res) => res.json())
+//   .catch((err) => console.error('Failed after retries:', err.message));
