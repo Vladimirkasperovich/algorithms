@@ -85,3 +85,21 @@ const fetchRetryer = (url, count = 5) => {
 // fetchRetryer('https://unstable-api.com/data')
 //   .then((data) => console.log('Успех после повторов:', data))
 //   .catch((err) => console.log('Ошибка:', err.message));
+
+const findPairs = (arr, target) => {
+  const seen = new Map();
+  const result = [];
+  for (const num of arr) {
+    const complement = target - num;
+    if (seen.has(complement)) {
+      result.push([complement, num]);
+    } else {
+      seen.set(num, num);
+    }
+  }
+  return result;
+};
+
+// console.log(findPairs([2, 4, 3, 7, 8, 1], 9)); // [[7, 2], [8, 1]]
+// console.log(findPairs([1, 2, 3, 4, 5], 10)); // []
+// console.log(findPairs([0, -1, -2, 2, 1], 0)); // [[-1, 1], [-2, 2]]
