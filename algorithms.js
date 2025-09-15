@@ -123,3 +123,14 @@ const isPalindrome = (str) => {
 // console.log(isPalindrome("No 'x' in Nixon")); // true
 // console.log(isPalindrome('Was it a car or a cat I saw?')); // true
 // console.log(isPalindrome('Eva, I see bees in a cave')); // false
+
+const isAnagram = (str1, str2) => {
+  const firstStr = str1.toLowerCase().split('').sort().join('');
+  const secondStr = str2.toLowerCase().split('').sort().join('');
+  return firstStr === secondStr;
+};
+
+// console.log(isAnagram('finder', 'Friend')); // true
+// console.log(isAnagram('hello', 'bye')); // false
+// console.log(isAnagram('listen', 'silent')); // true
+// console.log(isAnagram('rail safety', 'fairy tales'));
