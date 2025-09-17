@@ -394,3 +394,14 @@ const getSortedArray = (arr) => {
 };
 
 // console.log(getSortedArray([1, 5, 2, 4, 3]));
+
+// Есть задача функция принимает массив чисел,
+// необхоимо вернуть массив с наибольшими числами в порядке убывания,
+// например принимает[1, 2, 5, 3, 4, 6, 4,] - вернуть[6, 5]
+
+const getTopTwoDescending = (data) => {
+  // Ваш код здесь
+  const sorted = [...data].sort((a, b) => b - a);
+  return [sorted[0], sorted[1]];
+};
+console.log(getTopTwoDescending([1, 2, 5, 3, 4, 6, 4]));
