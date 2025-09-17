@@ -369,3 +369,28 @@ const findMaxNumber = (array) => {
 };
 // console.log(findMaxNumber([1, 2, 3, 4, 5, 6])); // 6
 // console.log(findMaxNumber([1, 0, 3, 4, 5, 10, 6])); // 10
+
+// Напишите функцию сортировки массива
+// (исходный массив должен остаться без изменений)
+
+const getSortedArray = (arr) => {
+  // Ваш код здесь
+  if (arr.length <= 1) return arr;
+  const less = [];
+  const more = [];
+  let pivot = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    if (num < pivot) {
+      less.push(num);
+    } else if (num === pivot) {
+      pivot = num;
+    } else {
+      more.push(num);
+    }
+  }
+
+  return [...getSortedArray(less), pivot, ...getSortedArray(more)];
+};
+
+// console.log(getSortedArray([1, 5, 2, 4, 3]));
