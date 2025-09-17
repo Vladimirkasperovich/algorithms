@@ -499,3 +499,65 @@ const sortByFrequencyWithOrder = (arr) => {
 };
 
 // console.log(sortByFrequencyWithOrder([1, 1, 1, 2, 2, 2, 2, 4, 4, 5, 0])); // [2,1,4,5,0]
+
+/*
+Есть массив операций
+Необходимо операции отсортировать по дате и сгруппировать их по году, а в качестве значений представить массивы с датами в формате MM-DD.
+Пример результаты:
+result = {
+	"2017": [
+		"07-31",
+		"08-22"
+		],
+	"2018": [
+		"01-01",
+		"02-22"
+	]
+}
+*/
+
+const operations = [
+  { date: '2017-07-31', amount: '5422' },
+  { date: '2017-06-30', amount: '5220' },
+  { date: '2017-05-31', amount: '5365' },
+  { date: '2017-08-31', amount: '5451' },
+  { date: '2017-09-30', amount: '5303' },
+  { date: '2018-03-31', amount: '5654' },
+  { date: '2017-10-31', amount: '5509' },
+  { date: '2017-12-31', amount: '5567' },
+  { date: '2018-01-31', amount: '5597' },
+  { date: '2017-11-30', amount: '5359' },
+  { date: '2018-02-28', amount: '5082' },
+  { date: '2018-04-14', amount: '2567' },
+];
+
+const getMonthAndDay = (date) => {
+  const inputMonth = date.getMonth() + 1;
+  const month = `${inputMonth < 10 ? `0${inputMonth}` : inputMonth}`.padStart(
+    2,
+    '0',
+  );
+  const day = date.getDate();
+  return `${month}-${day}`;
+};
+
+function sortOperations(operations) {
+  // Ваш код здесь
+  const result = {};
+  const sortedOperation = [...operations].sort(
+    (a, b) => new Date(a.date) - new Date(b.date),
+  );
+  sortedOperation.forEach((operation) => {
+    const date = new Date(operation.date);
+    const key = date.getFullYear();
+    const value = getMonthAndDay(date);
+    if (!result[key]) {
+      result[key] = [value];
+    } else {
+      result[key].push(value);
+    }
+  });
+  return result;
+}
+
+// console.log(sortOperations(operations));
