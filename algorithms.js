@@ -456,3 +456,12 @@ function splitIntoChunks(arr, num) {
 // console.log(splitIntoChunks([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)); // [[1,2,3],[4,5,6],[7,8,9]]
 // console.log(splitIntoChunks([1, 2, 3, 4, 5, 6, 7, 8, 9], 4)); // [[1,2,3,4],[5,6,7,8],[9]]
 // console.log(splitIntoChunks([1, 2, 3, 4, 5, 6, 7, 8, 9], 2)); // [[1,2],[3,4],[5,6],[7,8],[9]]
+
+// вернуть массив уникальных чисел
+const getUniqDigits = (arr) => {
+  // Ваш код здесь
+  const set = new Set(arr.map(Number).filter((num) => !isNaN(num)));
+  return [...set.keys()].sort((a, b) => a - b);
+};
+
+// console.log(getUniqDigits(['a', 0, 4, '4', '0', 5, 'd'])); // output [0,1,2,3,4,5,6,7,8,9,10]`
