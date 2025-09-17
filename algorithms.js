@@ -401,7 +401,18 @@ const getSortedArray = (arr) => {
 
 const getTopTwoDescending = (data) => {
   // Ваш код здесь
-  const sorted = [...data].sort((a, b) => b - a);
-  return [sorted[0], sorted[1]];
+  let firstMax = -Infinity;
+  let secondMax = -Infinity;
+
+  data.forEach((num) => {
+    if (num > firstMax) {
+      secondMax = firstMax;
+      firstMax = num;
+    } else if (num > secondMax) {
+      secondMax = num;
+    }
+  });
+
+  return [firstMax, secondMax];
 };
-console.log(getTopTwoDescending([1, 2, 5, 3, 4, 6, 4]));
+// console.log(getTopTwoDescending([1, 2, 5, 3, 4, 6, 4])); //[6, 5]
