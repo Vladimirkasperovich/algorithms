@@ -356,3 +356,16 @@ const extractDomain = (baseUrl) => {
 // console.log(extractDomain('http://example.org')); // "example.org"
 // console.log(extractDomain('https://sub.domain.com/path')); // "sub.domain.com"
 // console.log(extractDomain('invalid-url')); // null
+
+// Напишите функцию поиска максимального числа
+
+const findMaxNumber = (array) => {
+  // Ваш код здесь
+  let maxNumber = array[0];
+  array.forEach((num) => {
+    if (num > maxNumber) maxNumber = num;
+  });
+  return maxNumber;
+};
+// console.log(findMaxNumber([1, 2, 3, 4, 5, 6])); // 6
+// console.log(findMaxNumber([1, 0, 3, 4, 5, 10, 6])); // 10
