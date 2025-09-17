@@ -416,3 +416,16 @@ const getTopTwoDescending = (data) => {
   return [firstMax, secondMax];
 };
 // console.log(getTopTwoDescending([1, 2, 5, 3, 4, 6, 4])); //[6, 5]
+
+function sumPositiveEvenNumbers(arr) {
+  // Ваш код здесь
+  let total = 0;
+  arr.forEach((num) => {
+    if (num % 2 === 0 && num > 0) {
+      total += num;
+    }
+  });
+  return total;
+}
+
+// console.log(sumPositiveEvenNumbers([5, 0, -5, 20, 88, 17, -32])); // 108
