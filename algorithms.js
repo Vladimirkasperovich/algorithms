@@ -429,3 +429,13 @@ function sumPositiveEvenNumbers(arr) {
 }
 
 // console.log(sumPositiveEvenNumbers([5, 0, -5, 20, 88, 17, -32])); // 108
+
+function serializeElementFrequencies(arr) {
+  // Ваш код здесь
+  return arr.reduce((acc, cur) => {
+    acc[cur] = (acc[cur] || 0) + 1;
+    return acc;
+  }, {});
+}
+
+// console.log(serializeElementFrequencies([1, 2, 3, 4, 4])); // {'1:1, 2:1, 3:1, 4:2'}
