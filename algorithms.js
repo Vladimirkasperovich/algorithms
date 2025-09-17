@@ -465,3 +465,21 @@ const getUniqDigits = (arr) => {
 };
 
 // console.log(getUniqDigits(['a', 0, 4, '4', '0', 5, 'd'])); // output [0,1,2,3,4,5,6,7,8,9,10]`
+
+/*
+Напишите функцию, которая принимает массив строк и возвращает самую частовстречающуюся строку в этом массиве. Если таких строк несколько, то нужно вернуть первую, идя слева на право.
+*/
+
+function highestFrequency(array) {
+  // Ваш код здесь
+  const seenStr = {};
+  array.forEach((str) => {
+    seenStr[str] = (seenStr[str] || 0) + 1;
+  });
+  const max = Math.max(...Object.values(seenStr));
+  return Object.entries(seenStr).find(([_, value]) => value === max)[0];
+}
+
+// console.log(highestFrequency(['a', 'b', 'c', 'c', 'd', 'e'])); // -> c
+// console.log(highestFrequency(['abc', 'def', 'abc', 'def', 'abc'])); // -> abc
+// console.log(highestFrequency(['abc', 'def'])); // -> abc
