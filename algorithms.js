@@ -483,3 +483,19 @@ function highestFrequency(array) {
 // console.log(highestFrequency(['a', 'b', 'c', 'c', 'd', 'e'])); // -> c
 // console.log(highestFrequency(['abc', 'def', 'abc', 'def', 'abc'])); // -> abc
 // console.log(highestFrequency(['abc', 'def'])); // -> abc
+
+// написать функцию которая принимает массив значений и выводит массив уникальных элементов, отсортированных по частоте
+
+const sortByFrequencyWithOrder = (arr) => {
+  // Ваш код
+  const seenNum = {};
+  arr.forEach((num) => {
+    seenNum[num] = (seenNum[num] || 0) + 1;
+  });
+
+  return [...Object.entries(seenNum)]
+    .sort((a, b) => b[1] - a[1])
+    .map((num) => +num[0]);
+};
+
+// console.log(sortByFrequencyWithOrder([1, 1, 1, 2, 2, 2, 2, 4, 4, 5, 0])); // [2,1,4,5,0]
