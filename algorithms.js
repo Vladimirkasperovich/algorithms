@@ -577,3 +577,27 @@ const findMaxSalary = (data) => {
   };
 };
 // console.log(findMaxSalary(findMaxSalaryArray));
+const getValueTree = {
+  value: 1,
+  children: [
+    {
+      value: 2,
+      children: [{ value: 3 }],
+    },
+    {
+      value: 4,
+      children: [{ value: 5 }, { value: 6 }],
+    },
+  ],
+};
+
+const getValue = (tree) => {
+  const result = [tree.value];
+  if (Array.isArray(tree.children)) {
+    for (const node of tree.children) {
+      result.push(...getValue(node));
+    }
+  }
+  return result;
+};
+// console.log(getValue(tree)); // [1, 2, 3, 4, 5, 6]
