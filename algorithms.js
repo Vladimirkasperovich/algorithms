@@ -601,3 +601,37 @@ const getValue = (tree) => {
   return result;
 };
 // console.log(getValue(tree)); // [1, 2, 3, 4, 5, 6]
+
+/**
+ * Вход: массив чисел
+ * Выход: Строка с диапазонами
+ * Необходимо преобразовать полученный на вход массив в строку,
+ * сворачивая соседние по числовому ряду числа в диапазоны.
+ */
+
+function range(arr) {
+  // Твоя реализация здесь
+  if (!arr.length) return '';
+  const sortedArray = [...arr].sort((a, b) => a - b);
+  const result = [String(sortedArray[0])];
+  let isInterval = false;
+
+  for (let i = 1; i <= sortedArray.length; i++) {
+    const current = sortedArray[i];
+    const last = sortedArray[i - 1];
+    if (current - last === 1) {
+      isInterval = true;
+      continue;
+    }
+    if (isInterval) {
+      result[result.length - 1] += `-${last}`;
+      isInterval = false;
+    }
+    if (current) {
+      result.push(String(current));
+    }
+  }
+  return result.join(' ');
+}
+// console.log(range([1, 4, 5, 2, 3, 9, 8, 11, 0])); // '0-5,8-9,11'
+// console.log(range([1, 4, 3, 2])); // '1-4'
