@@ -709,3 +709,39 @@ function groupByUser(arr, prop) {
 //   20: [{ name: 'Alex', age: 20 }, { name: 'Pavel', age: 20 } ],
 //   25: [{ name: 'Lena', age: 25 }]
 // }
+// Из исходного массива сделать объект, ключами которого будут все встречающиеся gender,
+// а значениями массив объектов юзеров
+
+const users = [
+  {
+    id: 1,
+    name: 'Виктория',
+    gender: 'female',
+  },
+  {
+    id: 2,
+    name: 'Андрей',
+    gender: 'male',
+  },
+  {
+    id: 3,
+    name: 'Александр',
+    gender: 'male',
+  },
+];
+
+function groupUsersByGender(users) {
+  // Ваш код здесь
+  const group = {};
+  users.forEach((item) => {
+    const key = item.gender;
+    if (!group[key]) {
+      group[key] = [item];
+    } else {
+      group[key].push(item);
+    }
+  });
+  return group;
+}
+
+// console.log(groupUsersByGender(users));
