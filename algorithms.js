@@ -680,3 +680,32 @@ function locateSumPair(arr, target) {
 }
 
 // console.log(locateSumPair([2, 7, 11, 15], 9)); // [0,1]
+
+// Вызов функции - groupBy(persons, "age")
+
+const persons = [
+  { name: 'Alex', age: 20 },
+  { name: 'Lena', age: 25 },
+  { name: 'Pavel', age: 20 },
+];
+
+function groupByUser(arr, prop) {
+  // Ваш код здесь
+  const grouped = {};
+  arr.forEach((item) => {
+    const key = item[prop];
+    if (!grouped[key]) {
+      grouped[key] = [item];
+    } else {
+      grouped[key].push(item);
+    }
+  });
+  return grouped;
+}
+
+// console.log(groupByUser(persons, 'age'));
+
+// Результат {
+//   20: [{ name: 'Alex', age: 20 }, { name: 'Pavel', age: 20 } ],
+//   25: [{ name: 'Lena', age: 25 }]
+// }
