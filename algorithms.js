@@ -635,3 +635,28 @@ function range(arr) {
 }
 // console.log(range([1, 4, 5, 2, 3, 9, 8, 11, 0])); // '0-5,8-9,11'
 // console.log(range([1, 4, 3, 2])); // '1-4'
+
+// дан массив, необходимо вернуть строку с ошибкой если одно из значений не является числом,
+// если все значения верны, то возвращаем разность суммы чисел кратных 7 и максимально значения массива
+
+const getSumOfPreparedNumbers = (arr) => {
+  if (arr.some((item) => isNaN(item) || typeof item !== 'number'))
+    return 'входящие данные не удовлетворяют требованиям';
+
+  let total = 0;
+  const max = Math.max(...arr);
+  for (const item of arr) {
+    if (item % 7 === 0) {
+      total += item;
+    }
+  }
+  return total - max;
+};
+
+// console.log(getSumOfPreparedNumbers([true])); // output 'входящие данные не удовлетворяют требованиям'
+// console.log(getSumOfPreparedNumbers(['smth'])); // output 'входящие данные не удовлетворяют требованиям'
+// console.log(
+//   getSumOfPreparedNumbers([
+//     1, 11, 21, 40, 50, 35, 2, 6, 16, 17, 63, 98, 77, 49,
+//   ]),
+// ); // output 245
