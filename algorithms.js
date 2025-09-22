@@ -923,3 +923,37 @@ const calculateTotalNestedAgeUser1 = {
 };
 
 // console.log(calculateTotalNestedAge(calculateTotalNestedAgeUser1)); // 100
+
+// Напишите функцию, которая возвращает новый объект,
+// в котором все примитивные элементы вложенных объектов были рекурсивно "подняты"
+
+const flattenNestedObjectObj = {
+  a: {
+    b: {
+      c: 1,
+      d: 2,
+      e: 3,
+    },
+    f: {
+      g: 4,
+      h: 5,
+    },
+    i: 6,
+    j: 7,
+  },
+};
+
+const flattenNestedObject = (obj) => {
+  // Ваш код здесь
+  let result = {};
+  for (const key in obj) {
+    if (obj[key] && typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+      result = { ...result, ...flattenNestedObject(obj[key]) };
+    } else {
+      result[key] = obj[key];
+    }
+  }
+  return result;
+};
+
+// console.log(flattenNestedObject(flattenNestedObjectObj)); // { c: 1, d: 2, e: 3, g: 4, h: 5, i: 6, j: 7 }
