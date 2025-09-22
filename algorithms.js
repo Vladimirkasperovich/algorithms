@@ -600,7 +600,7 @@ const getValue = (tree) => {
   }
   return result;
 };
-// console.log(getValue(tree)); // [1, 2, 3, 4, 5, 6]
+// console.log(getValue(getTreeValuesTree)); // [1, 2, 3, 4, 5, 6]
 
 /**
  * Вход: массив чисел
@@ -777,3 +777,36 @@ function flattenNestedArray(array) {
 }
 
 // console.log(flattenNestedArray([[1], [[2, 3]], [[[[[4]]]]]])); // -> [1, 2, 3, 4]
+
+/*
+Дана структура данных в виде дерева
+Необходимо написать функцию, возвращающую значения всех вершин дерева:
+getTreeValues(getTreeValuesTree); // => [1, 2, 3, 4, 5, 6, 7]
+*/
+
+const getTreeValuesTree = {
+  value: 1,
+  children: [
+    {
+      value: 2,
+      children: [{ value: 4 }, { value: 5 }],
+    },
+    {
+      value: 3,
+      children: [{ value: 6 }, { value: 7 }],
+    },
+  ],
+};
+
+const getTreeValues = (obj) => {
+  // Ваш код здесь
+  const result = [obj.value];
+  if (Array.isArray(obj.children)) {
+    obj.children.forEach((item) => {
+      result.push(...getTreeValues(item));
+    });
+  }
+  return result;
+};
+
+// console.log(getTreeValues(getTreeValuesTree));
