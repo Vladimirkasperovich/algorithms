@@ -884,3 +884,42 @@ const sortByField = function (array, param) {
   });
 };
 // console.log(sortByField(sortByFieldData, 'country'));
+
+function calculateTotalNestedAge(user) {
+  // Ваш код здесь
+  let sum = user.age;
+
+  if (Array.isArray(user.children)) {
+    for (const node of user.children) {
+      sum += calculateTotalNestedAge(node);
+    }
+  }
+  return sum;
+}
+
+const calculateTotalNestedAgeUser1 = {
+  name: 'Петр',
+  age: 49,
+  children: [
+    {
+      name: 'Ника',
+      age: 25,
+      children: [
+        {
+          name: 'Андрей',
+          age: 3,
+        },
+        {
+          name: 'Олег',
+          age: 1,
+        },
+      ],
+    },
+    {
+      name: 'Александр',
+      age: 22,
+    },
+  ],
+};
+
+// console.log(calculateTotalNestedAge(calculateTotalNestedAgeUser1)); // 100
