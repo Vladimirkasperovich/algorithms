@@ -810,3 +810,48 @@ const getTreeValues = (obj) => {
 };
 
 // console.log(getTreeValues(getTreeValuesTree));
+
+// Функция `optionalChaining` проверяет наличие заданного пути
+// и свойства в объекте и возвращает значение этого свойства,
+// если оно существует. Если свойство или путь не существует,
+// возвращается значение `undefined`.
+
+const optionalChainingObj = {
+  a: {
+    b: {
+      c: {
+        d: 'Привет!',
+      },
+    },
+  },
+};
+
+function optionalChaining(obj, path) {
+  if (!path.length) return obj;
+  // Ваш код здесь
+  const paths = path.split('.');
+  let result = obj;
+  for (const key of paths) {
+    if (!result[key]) {
+      return undefined;
+    } else {
+      result = result[key];
+    }
+  }
+  return result;
+}
+
+// console.log(optionalChaining(optionalChainingObj, 'a.b.c')); // Ответ = { d: 'Привет' }
+// console.log(optionalChaining(optionalChainingObj, 'a.b.c.d')); // Ответ = Привет
+// console.log(optionalChaining(optionalChainingObj, 'a.b.c.d.e')); // Ответ = undefined
+// console.log(optionalChaining(optionalChainingObj, 'b.d.a')); // Ответ = undefined
+// console.log(optionalChaining(optionalChainingObj, '')); /* Ответ = {
+//   a: {
+//     b: {
+//       c: {
+//         d: 'Привет!',
+//       },
+//     },
+//   },
+// }
+// */
