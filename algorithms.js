@@ -1061,3 +1061,17 @@ function countDuplicateCharacters(str) {
 // console.log(countDuplicateCharacters('aabbcde')); //2
 // console.log(countDuplicateCharacters('aabBcde')); //2
 // console.log(countDuplicateCharacters('indivisibiity')); //1
+
+function isUnique(string) {
+  // Ваш код здесь
+  const seen = new Map();
+  for (const char of string) {
+    seen.set(char, (seen.get(char) || 0) + 1);
+  }
+  return seen.values().every((item) => item === 1);
+}
+
+// console.log(isUnique('abcdef')); // -> true
+// console.log(isUnique('1234567')); // -> true
+// console.log(isUnique('abcABC')); // -> true
+// console.log(isUnique('abcadef')); // -> false
