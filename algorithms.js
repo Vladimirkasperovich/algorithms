@@ -1091,3 +1091,26 @@ function removeDupes(str) {
 // console.log(removeDupes('aabbccdd')); // -> 'abcd'
 // console.log(removeDupes('abcddbca')); // -> 'abcd'
 // console.log(removeDupes('abababcdcdcd')); // -> 'abcd'
+
+/**
+ * Функция должна преобразовывать строку в формат camelCase
+ * @param str {string}
+ */
+
+const str = 'mY-comPonent name';
+
+function camelCase(str) {
+  // Ваш код здесь
+  const words = str.split(/[-_\s]+/);
+  if (words.length === 0) return '';
+  const result = [];
+  for (const word of words) {
+    const char = word.toLowerCase();
+    const sliceWord = char[0].toUpperCase() + char.slice(1);
+    result.push(sliceWord);
+  }
+  return result.join('');
+}
+
+// console.log(camelCase('mY-comPonent name') === 'MyComponentName');
+// console.log(camelCase(str));
