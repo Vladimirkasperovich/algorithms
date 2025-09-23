@@ -1075,3 +1075,19 @@ function isUnique(string) {
 // console.log(isUnique('1234567')); // -> true
 // console.log(isUnique('abcABC')); // -> true
 // console.log(isUnique('abcadef')); // -> false
+
+function removeDupes(str) {
+  // Ваш код здесь
+  const map = {};
+  for (const char of str) {
+    if (!map[char]) {
+      map[char] = char;
+    }
+  }
+  return Object.values(map).join('');
+}
+
+// console.log(removeDupes('abcd')); // -> 'abcd'
+// console.log(removeDupes('aabbccdd')); // -> 'abcd'
+// console.log(removeDupes('abcddbca')); // -> 'abcd'
+// console.log(removeDupes('abababcdcdcd')); // -> 'abcd'
