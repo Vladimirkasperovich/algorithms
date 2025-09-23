@@ -1012,3 +1012,26 @@ const getTransformCities = (data) => {
     .sort((a, b) => a.key.localeCompare(b.key));
 };
 // console.log(getTransformCities(getTransformCitiesData));
+
+/*
+Реализуйте функцию, которая меняет в строке регистр каждой буквы на противоположный.
+Функция должна возвращать полученный результат
+*/
+
+const invertCase = (str) => {
+  // Ваш код здесь
+  let result = '';
+  for (const strElement of str) {
+    if (/[A-Z]/.test(strElement)) {
+      result += strElement.toLowerCase();
+    } else if (/[a-z]/.test(strElement)) {
+      result += strElement.toUpperCase();
+    } else {
+      result += strElement;
+    }
+  }
+  return result;
+};
+
+// console.log(invertCase('Hello, World!')); // hELLO, wORLD!
+// console.log(invertCase('I loVe JS')); // i LOvE js
