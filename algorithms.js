@@ -1140,3 +1140,27 @@ const isHappyTicket = (str) => {
 // console.log(isHappyTicket('1222')); // false
 // console.log(isHappyTicket('054702')); // true
 // console.log(isHappyTicket('00')); // true
+
+function checkBrackets(str) {
+  // Ваш код здесь
+  const stack = [];
+  const pairs = { '(': ')', '{': '}', '[': ']' };
+  for (const bracket of str) {
+    if (pairs[bracket]) {
+      stack.push(bracket);
+    } else if (Object.values(pairs).includes(bracket)) {
+      const last = stack.pop();
+      if (pairs[last] !== bracket) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
+}
+
+// console.log(checkBrackets('()')); // true
+// console.log(checkBrackets('()[]{}')); // true
+// console.log(checkBrackets('(]')); // false
+// console.log(checkBrackets('{[]}')); // true
+// console.log(checkBrackets('([)]')); // false
+// console.log(checkBrackets('{[[]{}]}()()')); // true
