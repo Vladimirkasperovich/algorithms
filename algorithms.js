@@ -1114,3 +1114,29 @@ function camelCase(str) {
 
 // console.log(camelCase('mY-comPonent name') === 'MyComponentName');
 // console.log(camelCase(str));
+
+/*
+"Счастливым" называют билет с номером, в котором сумма первой половины цифр равна сумме второй половины цифр.
+Номера могут быть произвольной длины, с единственным условием, что количество цифр всегда чётно, например: 33 или 2341 и так далее.
+
+Билет с номером 385916 — счастливый, так как 3 + 8 + 5 === 9 + 1 + 6. Билет с номером 231002 не является счастливым, так как 2 + 3 + 1 !== 0 + 0 + 2.
+Реализуйте и экспортируйте по умолчанию функцию, проверяющую является ли номер счастливым (номер — всегда строка). Функция должна возвращать true, если билет счастливый, или false, если нет.
+*/
+
+const isHappyTicket = (str) => {
+  // Ваш код здесь
+  const digits = str.split('').map(Number);
+  const len = digits.length;
+  const half = Math.floor(len / 2);
+
+  const left = digits.slice(0, half);
+  const right = digits.slice(len % 2 === 0 ? half : half + 1);
+  const sum = (arr) => arr.reduce((acc, cur) => acc + cur, 0);
+  return sum(left) === sum(right);
+};
+
+// console.log(isHappyTicket('385916')); // true
+// console.log(isHappyTicket('231002')); // false
+// console.log(isHappyTicket('1222')); // false
+// console.log(isHappyTicket('054702')); // true
+// console.log(isHappyTicket('00')); // true
