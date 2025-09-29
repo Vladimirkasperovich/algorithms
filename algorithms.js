@@ -48,3 +48,11 @@ const getTopTwoDescending = (data) => {
   return [firstMax, secondMax];
 };
 // console.log(getTopTwoDescending([1, 2, 5, 3, 4, 6, 4]));
+
+function sumPositiveEvenNumbers(arr) {
+  return arr
+    .filter((item) => item % 2 === 0 && item > 0)
+    .reduce((acc, cur) => acc + cur, 0);
+}
+
+// console.log(sumPositiveEvenNumbers([5, 0, -5, 20, 88, 17, -32])); // 22
