@@ -263,3 +263,21 @@ const getSumOfPreparedNumbers = (arr) => {
 // console.log(getSumOfPreparedNumbers([true])); // output 'входящие данные не удовлетворяют требованиям'
 // console.log(getSumOfPreparedNumbers(['smth'])); // output 'входящие данные не удовлетворяют требованиям'
 // console.log(getSumOfPreparedNumbers([1, 11, 21, 40, 50, 35, 2, 6, 16, 17, 63, 98, 77, 49,]),); // output 245
+
+// Реализуйте функцию, которая возвращает индексы двух чисел из массива,
+// сумма которых равна заданному значению
+function locateSumPair(arr, target) {
+  const map = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    const diff = target - num;
+    if (map.has(diff)) {
+      return [map.get(diff), i];
+    } else {
+      map.set(num, i);
+    }
+  }
+  return [];
+}
+
+// console.log(locateSumPair([2, 7, 11, 15], 9)); // [0,1]
