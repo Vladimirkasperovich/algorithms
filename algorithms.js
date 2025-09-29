@@ -72,3 +72,14 @@ function delayedArrayLogging() {
 }
 
 // console.log(delayedArrayLogging());
+
+function serializeElementFrequencies(arr) {
+  // Ваш код здесь
+  const seen = {};
+  arr.forEach((num) => {
+    seen[num] = (seen[num] || 0) + 1;
+  });
+  return seen;
+}
+
+// console.log(serializeElementFrequencies([1, 2, 3, 4, 4])); // {'1:1, 2:1, 3:1, 4:2'}
