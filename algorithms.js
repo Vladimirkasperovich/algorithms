@@ -281,3 +281,70 @@ function locateSumPair(arr, target) {
 }
 
 // console.log(locateSumPair([2, 7, 11, 15], 9)); // [0,1]
+
+/*
+Реализуйте функцию, которая меняет в строке регистр каждой буквы на противоположный.
+Функция должна возвращать полученный результат
+*/
+
+const invertCase = (str) => {
+  // Ваш код здесь
+  let out = '';
+  for (const char of str) {
+    if (/[a-z]/.test(char)) {
+      out += char.toUpperCase();
+    } else if (/[A-Z]/.test(char)) {
+      out += char.toLowerCase();
+    } else {
+      out += char;
+    }
+  }
+  return out;
+};
+
+// console.log(invertCase('Hello, World!')); // hELLO, wORLD!
+// console.log(invertCase('I loVe JS')); // i LOvE js
+
+/*
+Напишите функцию, которая будет возвращать количество букв и цифр, не зависимо от регистра,
+которые встречаются во входной строке более одного раза.
+Можно предположить, что входная строка содержит только буквы алфавита (как прописные,
+так и строчные) и числовые цифры.
+Например:
+"abcde" => 0 // все буквы уникальны
+"aabbcde" => 2 // a и b задублированы
+"aabBcde" => 2 // от регистра не зависит
+"indivisibiity" => 1 // количество повторений не важно, как и то, что повторы идут подряд
+*/
+
+function countDuplicateCharacters(str) {
+  // Ваш код здесь
+  const map = new Map();
+  for (const char of str.toLowerCase()) {
+    map.set(char, (map.get(char) || 0) + 1);
+  }
+  const foundElem = [...map.entries()].filter((elem) => elem[1] > 1);
+  return foundElem.length;
+}
+
+// console.log(countDuplicateCharacters('abcde')); //0
+// console.log(countDuplicateCharacters('aabbcde')); //2
+// console.log(countDuplicateCharacters('aabBcde')); //2
+// console.log(countDuplicateCharacters('indivisibiity')); //1
+
+function isUnique(string) {
+  // Ваш код здесь
+  const map = new Map();
+  for (const char of string) {
+    if (map.has(char)) {
+      return false;
+    }
+    map.set(char, true);
+  }
+  return true;
+}
+
+// console.log(isUnique('abcdef')); // -> true
+// console.log(isUnique('1234567')); // -> true
+// console.log(isUnique('abcABC')); // -> true
+// console.log(isUnique('abcadef')); // -> false
