@@ -112,3 +112,17 @@ function splitIntoChunks(arr, num) {
 // console.log(splitIntoChunks([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)); // [[1,2,3],[4,5,6],[7,8,9]]
 // console.log(splitIntoChunks([1, 2, 3, 4, 5, 6, 7, 8, 9], 4)); // [[1,2,3,4],[5,6,7,8],[9]]
 // console.log(splitIntoChunks([1, 2, 3, 4, 5, 6, 7, 8, 9], 2)); // [[1,2],[3,4],[5,6],[7,8],[9]]
+
+// вернуть массив уникальных чисел
+const getUniqDigits = (arr) => {
+  const onlyDigits = arr.map(Number).filter((item) => !isNaN(item));
+  const seen = {};
+  onlyDigits.forEach((item) => {
+    if (!seen[item]) {
+      seen[item] = item;
+    }
+  });
+  return [...Object.values(seen)].sort((a, b) => a - b);
+};
+
+// console.log(getUniqDigits(['a',0,4,'4','0',5,'d',7,0,'8',7,10,'s',1,3,'9',10,3,1,9,'u',6,5,'2'])); // output [0,1,2,3,4,5,6,7,8,9,10]`
