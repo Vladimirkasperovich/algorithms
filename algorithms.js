@@ -200,3 +200,47 @@ function sortOperations(operations) {
 }
 
 // console.log(sortOperations(operations));
+
+// Необходимо сделать выборки.
+// 1. Список имен, отсортированный по размеру зарплаты
+// 2. Размер максимальной зарплаты
+// 3. Статистика по каждому отделу: сумма затрат, количество сотрудников, средняя з/п
+
+const arr = [
+  { name: 'Вася', salary: 10000, department: 'Frontend' },
+  { name: 'Петя', salary: 12000, department: 'Backend' },
+  { name: 'Дима', salary: 10500, department: 'Frontend' },
+  { name: 'Оля', salary: 15000, department: 'Backend' },
+  { name: 'Саша', salary: 8000, department: 'Frontend' },
+  { name: 'Олег', salary: 9000, department: 'Testing' },
+];
+
+const findMaxSalary = (data) => {
+  const sortedData = [...data].sort((a, b) => a.salary - b.salary);
+  const names = sortedData.map(({ name }) => name);
+  const maxSalary = sortedData[sortedData.length - 1].salary;
+  const statistics = {};
+
+  sortedData.forEach(({ department, salary }) => {
+    if (!statistics[department]) {
+      statistics[department] = {
+        amount_of_costs: salary,
+        number_of_employees: 1,
+        average_salary: salary,
+      };
+    } else {
+      const savedStatistics = statistics[department];
+      savedStatistics.amount_of_costs += salary;
+      savedStatistics.number_of_employees += 1;
+      savedStatistics.average_salary =
+        savedStatistics.amount_of_costs / savedStatistics.number_of_employees;
+    }
+  });
+
+  return {
+    names,
+    maxSalary,
+    statistics,
+  };
+};
+// console.log(findMaxSalary(arr));
