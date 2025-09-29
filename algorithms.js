@@ -374,3 +374,32 @@ const memoize = (fn) => {
 // console.log(memoizedCalculation(5, 10)); // Вычисляет
 // console.log(memoizedCalculation(5, 10)); // Берет из кеша
 // console.log(memoizedCalculation(3, 7)); // Вычисляет
+
+/**
+ * @param {Function} fn - асинхронная функция
+ * @param {number} t - время в миллисекундах
+ * @return {Function} - функция с ограничением по времени
+ */
+const timeLimit = function (fn, t) {
+  return async function (...args) {
+    try {
+      const result = await Promise.race([
+        fn(...args),
+        new Promise((_, reject) => {
+          setTimeout(() => reject('Time Limit Exceeded'), t);
+        }),
+      ]);
+      return Promise.resolve(result);
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  };
+};
+// const fn1 = async (n) => {
+//   await new Promise((res) => setTimeout(res, 100));
+//   return n * n;
+// };
+// const limitedFn1 = timeLimit(fn1, 200);
+//
+// // Должен вернуть 25 (успевает за 100ms < 200ms)
+// limitedFn1(5).then(console.log).catch(console.log);
