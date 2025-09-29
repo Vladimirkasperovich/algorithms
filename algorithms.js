@@ -348,3 +348,29 @@ function isUnique(string) {
 // console.log(isUnique('1234567')); // -> true
 // console.log(isUnique('abcABC')); // -> true
 // console.log(isUnique('abcadef')); // -> false
+
+const memoize = (fn) => {
+  const cache = new Map();
+  return (...args) => {
+    const key = JSON.stringify(args);
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+    const result = fn(...args);
+    cache.set(key, result);
+    return result;
+  };
+};
+// Тестовая функция
+// function expensiveCalculation(x, y) {
+//   console.log('Выполняются сложные вычисления...');
+//   return x * y + Math.sqrt(x) / y;
+// }
+
+// Применяем мемоизацию
+// const memoizedCalculation = memoize(expensiveCalculation);
+//
+// // Тестируем
+// console.log(memoizedCalculation(5, 10)); // Вычисляет
+// console.log(memoizedCalculation(5, 10)); // Берет из кеша
+// console.log(memoizedCalculation(3, 7)); // Вычисляет
