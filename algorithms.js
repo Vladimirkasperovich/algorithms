@@ -244,3 +244,22 @@ const findMaxSalary = (data) => {
   };
 };
 // console.log(findMaxSalary(arr));
+
+// дан массив, необходимо вернуть строку с ошибкой если одно из значений не является числом,
+// если все значения верны, то возвращаем разность суммы чисел кратных 7 и максимально значения массива
+
+const getSumOfPreparedNumbers = (arr) => {
+  if (arr.some((item) => isNaN(item) || typeof item !== 'number')) {
+    return 'входящие данные не удовлетворяют требованиям';
+  }
+  const max = Math.max(...arr);
+  const total = arr
+    .filter((item) => item % 7 === 0)
+    .reduce((acc, cur) => acc + cur, 0);
+  return total - max;
+};
+
+// console.log(getSumOfPreparedNumbers([1, NaN, 21, 40, 50, 35, 2, NaN, 16, 17, NaN, 98, 77, 49]),); // output 'входящие данные не удовлетворяют требованиям'
+// console.log(getSumOfPreparedNumbers([true])); // output 'входящие данные не удовлетворяют требованиям'
+// console.log(getSumOfPreparedNumbers(['smth'])); // output 'входящие данные не удовлетворяют требованиям'
+// console.log(getSumOfPreparedNumbers([1, 11, 21, 40, 50, 35, 2, 6, 16, 17, 63, 98, 77, 49,]),); // output 245
