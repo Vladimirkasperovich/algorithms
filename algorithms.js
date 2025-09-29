@@ -29,3 +29,22 @@ const getSortedArray = (arr) => {
   return [...getSortedArray(left), pivot, ...getSortedArray(right)];
 };
 // console.log(getSortedArray([1, 5, 2, 4, 3]));
+
+// Есть задача функция принимает массив чисел,
+// необхоимо вернуть массив с наибольшими числами в порядке убывания,
+// например принимает[1, 2, 5, 3, 4, 6, 4,] - вернуть[6, 5]
+const getTopTwoDescending = (data) => {
+  let firstMax = -Infinity;
+  let secondMax = -Infinity;
+  for (let i = 1; i < data.length; i++) {
+    const num = data[i];
+    if (num > firstMax) {
+      secondMax = firstMax;
+      firstMax = num;
+    } else if (num > secondMax) {
+      secondMax = num;
+    }
+  }
+  return [firstMax, secondMax];
+};
+// console.log(getTopTwoDescending([1, 2, 5, 3, 4, 6, 4]));
