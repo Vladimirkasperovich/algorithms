@@ -440,3 +440,17 @@ function camelCase(str) {
 
 // console.log(camelCase('mY-comPonent name') === 'MyComponentName');
 // console.log(camelCase('mY-comPonent name'));
+
+const minifyString = (string) => {
+  const map = {};
+  let out = '';
+  for (const char of string) {
+    map[char] = (map[char] || 0) + 1;
+  }
+  for (const key in map) {
+    out += map[key] + key;
+  }
+  return out;
+};
+
+// console.log(minifyString('aaaawwwweerrr')); // '3a4w2e3r'
