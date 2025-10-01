@@ -483,3 +483,28 @@ const isHappyTicket = (str) => {
 // console.log(isHappyTicket('1222')); // false
 // console.log(isHappyTicket('054702')); // true
 // console.log(isHappyTicket('00')); // true
+
+function checkBrackets(str) {
+  // Ваш код здесь
+  const map = { '(': ')', '{': '}', '[': ']' };
+  const stack = [];
+  for (const bracket of str) {
+    if (map[bracket]) {
+      stack.push(bracket);
+    } else {
+      const last = stack.pop();
+      if (map[last] !== bracket) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
+
+// console.log(checkBrackets('()')); // true
+// console.log(checkBrackets('()[]{}')); // true
+// console.log(checkBrackets('(]')); // false
+// console.log(checkBrackets('{[]}')); // true
+// console.log(checkBrackets('([)]')); // false
+// console.log(checkBrackets('{[[]{}]}()()')); // true
