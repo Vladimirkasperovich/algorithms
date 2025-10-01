@@ -532,3 +532,36 @@ function isBalanced(str) {
 // console.log(isBalanced('[({()})]')); // -> true
 // console.log(isBalanced('(50)((')); // -> false
 // console.log(isBalanced('[{]}')); // -> false
+
+/*
+Дана структура данных в виде дерева
+Необходимо написать функцию, возвращающую значения всех вершин дерева:
+getTreeValues(tree); // => [1, 2, 3, 4, 5, 6, 7]
+*/
+
+const getTreeValuesTree = {
+  value: 1,
+  children: [
+    {
+      value: 2,
+      children: [{ value: 4 }, { value: 5 }],
+    },
+    {
+      value: 3,
+      children: [{ value: 6 }, { value: 7 }],
+    },
+  ],
+};
+
+const getTreeValues = (obj) => {
+  // Ваш код здесь
+  const result = [obj.value];
+  if (Array.isArray(obj.children)) {
+    for (const node of obj.children) {
+      result.push(...getTreeValues(node));
+    }
+  }
+  return result;
+};
+
+// console.log(getTreeValues(getTreeValuesTree));
