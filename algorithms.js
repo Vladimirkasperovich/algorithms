@@ -403,3 +403,19 @@ const timeLimit = function (fn, t) {
 //
 // // Должен вернуть 25 (успевает за 100ms < 200ms)
 // limitedFn1(5).then(console.log).catch(console.log);
+
+function removeDupes(str) {
+  // Ваш код здесь
+  const map = {};
+  for (const char of str) {
+    if (!map[char]) {
+      map[char] = char;
+    }
+  }
+  return Object.values(map).join('');
+}
+
+// console.log(removeDupes('abcd')); // -> 'abcd'
+// console.log(removeDupes('aabbccdd')); // -> 'abcd'
+// console.log(removeDupes('abcddbca')); // -> 'abcd'
+// console.log(removeDupes('abababcdcdcd')); // -> 'abcd'
