@@ -508,3 +508,27 @@ function checkBrackets(str) {
 // console.log(checkBrackets('{[]}')); // true
 // console.log(checkBrackets('([)]')); // false
 // console.log(checkBrackets('{[[]{}]}()()')); // true
+
+function isBalanced(str) {
+  // Ваш код здесь
+  const map = { '(': ')', '{': '}', '[': ']' };
+  const stack = [];
+  for (const bracket of str) {
+    if (map[bracket]) {
+      stack.push(bracket);
+    } else if (Object.values(map).includes(bracket)) {
+      const last = stack.pop();
+      if (map[last] !== bracket) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
+
+// console.log(isBalanced('(x + y) - (4)')); // -> true
+// console.log(isBalanced('(((10 ) ()) ((?)(:)))')); // -> true
+// console.log(isBalanced('[({()})]')); // -> true
+// console.log(isBalanced('(50)((')); // -> false
+// console.log(isBalanced('[{]}')); // -> false
