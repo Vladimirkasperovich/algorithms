@@ -650,3 +650,35 @@ function includes(value, tree) {
 // console.log(includes(6, includesTree));
 // console.log(includes(7, includesTree));
 // console.log(includes(77, includesTree)); // false
+
+const flattenObjArr = [
+  {
+    id: 1,
+    next: [{ id: 2 }, { id: 3 }, { id: 4 }],
+  },
+  { id: 5, next: [{ id: 6 }, { id: 7 }, { id: 8 }] },
+];
+
+function flattenObj(arr) {
+  // Ваш код здесь
+  const result = [];
+  for (const { id, next } of arr) {
+    if (id) {
+      result.push({ id });
+    }
+    if (Array.isArray(next)) {
+      result.push(...flattenObj(next));
+    }
+  }
+  return result;
+}
+
+// console.log(flattenObj(flattenObjArr));
+//[ { id: 1 },
+// { id: 2 },
+// { id: 3 },
+// { id: 4 },
+// { id: 5 },
+// { id: 6 },
+// { id: 7 },
+// { id: 8 } ]
