@@ -767,3 +767,23 @@ const getTransformCities = (data) => {
   return Object.values(result).sort((a, b) => a.key.localeCompare(b.key));
 };
 // console.log(getTransformCities(getTransformCitiesData));
+
+Array.prototype.myIncludes = function (value) {
+  for (const item of this) {
+    if (item === value) return true;
+  }
+  return false;
+};
+
+// const array = [1, 2, 3];
+// console.log(array.myIncludes(2));
+// // Expected output: true
+//
+// const pets = ['cat', 'dog', 'bat'];
+//
+// console.log(pets.myIncludes('cat'));
+// // Expected output: true
+//
+// console.log(pets.myIncludes('at'));
+// // Expected output: false
+// // Ваш код здесь
