@@ -608,3 +608,45 @@ const sortByField = function (array, param) {
   return [...array].sort((a, b) => a[param].localeCompare(b[param]));
 };
 // console.log(sortByField(sortByFieldData, 'country'));
+
+// Напиши функцию includes(value) для объекта, которая принимает value и возращает true,
+// если есть поле value с этим значением и false, если нет. Объект следующий:
+
+const includesTree = {
+  value: 1,
+  children: [
+    {
+      value: 2,
+      children: [{ value: 4 }, { value: 5 }],
+    },
+    {
+      value: 3,
+      children: [{ value: 6 }, { value: 7 }],
+    },
+  ],
+};
+
+function includes(value, tree) {
+  // Ваш код здесь
+  if (tree.value === value) {
+    return true;
+  }
+  if (Array.isArray(tree.children)) {
+    for (const node of tree.children) {
+      if (includes(value, node)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+// console.log(includes(1, includesTree));
+// console.log(includes(11, includesTree)); // false
+// console.log(includes(2, includesTree));
+// console.log(includes(3, includesTree));
+// console.log(includes(4, includesTree));
+// console.log(includes(5, includesTree));
+// console.log(includes(6, includesTree));
+// console.log(includes(7, includesTree));
+// console.log(includes(77, includesTree)); // false
