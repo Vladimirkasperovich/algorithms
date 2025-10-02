@@ -803,3 +803,17 @@ Array.prototype.findUnique = function () {
 // console.log([10, 5, 10, 1, 6, 6, 6, 7, 9, 9, 10].findUnique());
 // // расширить массив методом findUnique, который возвращает новый массив, где перечислены только уникальные значения массива
 // console.log([10, 5, 10, 6, 6, 7, 2, 9, 9, 'str', 'str', 'constructor', 'date', () => {},].findUnique(),);
+
+Function.prototype.myBind = function (context, ...bindArgs) {
+  const fn = this;
+  if (typeof fn !== 'function') {
+    throw new Error('bind must be called on a function');
+  }
+  return function (...args) {
+    const uniqueProp = 'tempFN' + Math.random();
+    context[uniqueProp] = fn;
+    const result = context[uniqueProp](...bindArgs, ...args);
+    delete context[uniqueProp];
+    return result;
+  };
+};
