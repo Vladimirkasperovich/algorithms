@@ -716,3 +716,54 @@ const flattenNestedObject = (obj) => {
 };
 
 // console.log(flattenNestedObject(obj)); // { c: 1, d: 2, e: 3, g: 4, h: 5, i: 6, j: 7 }
+
+/**
+
+ Преобразовать исходную струкруту данных к структуре следующего вида:
+ const result = [
+ { key: "А", totalCount: 700, cities: ["Астана"] },
+ { key: "З", totalCount: 500, cities: ["Загреб"] },
+ { key: "Л", totalCount: 500, cities: ["Лиссабон", "Лондон"] },
+ { key: "М", totalCount: 700, cities: ["Магадан", "Москва"] },
+ { key: "Н", totalCount: 800, cities: ["Новосибирск"] },
+ { key: "Т", totalCount: 400, cities: ["Тверь"] }
+ ];
+ где
+ key - первый символ названия города,
+ totalCount - сумма значений count для всех городов
+ cities - массив названий городов.
+ *
+ Значения в массиве results должны быть отсортированы по key
+ Значения в массивах cities должны быть отсортированы
+ */
+
+const getTransformCitiesData = {
+  Москва: { count: 100 },
+  Лондон: { count: 200 },
+  Лиссабон: { count: 300 },
+  Тверь: { count: 400 },
+  Загреб: { count: 500 },
+  Магадан: { count: 600 },
+  Астана: { count: 700 },
+  Новосибирск: { count: 800 },
+};
+
+const getTransformCities = (data) => {
+  // Ваш код здесь
+  const result = {};
+  for (const path in data) {
+    const city = path;
+    const key = path[0];
+    if (!result[key]) {
+      result[key] = { key, totalCount: data[path].count, cities: [city] };
+    } else {
+      result[key].totalCount += data[path].count;
+      result[key].cities.push(city);
+    }
+  }
+  for (const key in result) {
+    result[key].cities.sort();
+  }
+  return Object.values(result).sort((a, b) => a.key.localeCompare(b.key));
+};
+// console.log(getTransformCities(getTransformCitiesData));
