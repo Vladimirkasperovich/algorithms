@@ -847,3 +847,40 @@ function myPromiseAll(promises) {
 // const p4 = Promise.reject('err');
 //
 // myPromiseAll([p1, p2, p3]).then(console.log).catch(console.log);
+
+const saveUser = (logger) => (user) => {
+  logger(`Saving user with id ${user.id}`);
+};
+const saveAdmin = (logger) => (admin) => {
+  logger(`Saving admin with id ${admin.id} `);
+};
+
+const saveBook = (logger) => (book) => {
+  logger(`Saving admin with id ${book.id} `);
+};
+
+const logger = (message) => {
+  const date = new Date();
+  const time = [date.getHours(), date.getMinutes(), date.getSeconds()].join(
+    ':',
+  );
+  const prefix = message.includes('Saving user') ? 'USER' : 'LOG';
+  console.log(`${prefix} [${time}]: ${message}`);
+};
+
+const main = () => {
+  const userSaver = saveUser(logger);
+  const adminSaver = saveAdmin(logger);
+  const bookSaver = saveBook(logger);
+
+  userSaver({
+    id: '1',
+  });
+  adminSaver({
+    id: '2',
+  });
+  bookSaver({ id: 3 });
+};
+
+// Запуск
+main();
