@@ -589,3 +589,22 @@ function optionalChaining(obj, path) {
 // console.log(optionalChaining({ a: { b: { c: { d: 'Привет!', }, }, }, }, 'a.b.c.d')); // Ответ = Привет
 // console.log(optionalChaining({ a: { b: { c: { d: 'Привет!', }, }, }, }, 'a.b.c.d.e')); // Ответ = undefined
 // console.log(optionalChaining({ a: { b: { c: { d: 'Привет!', }, }, }, }, 'b.d.a')); // Ответ = undefined
+
+// Написать функцию, которая принимает массив объектов и название поля объекта и возвращает массив объектов, отсортированных по переданному полю
+
+const sortByFieldData = [
+  { id: 1, age: 20, name: 'Иван', country: 'Russia', registred: true },
+  { id: 2, age: 30, name: 'Дима', country: 'Usa', registred: true },
+  { id: 3, age: 25, name: 'Леха', country: 'Russia', registred: false },
+  { id: 4, age: 20, name: 'Леха', country: 'Usa', registred: false },
+  { id: 5, age: 30, name: 'Иван', country: 'Russia', registred: true },
+  { id: 6, age: 50, name: 'Леха', country: 'Russia', registred: true },
+  { id: 7, age: 20, name: 'Дима', country: 'Usa', registred: false },
+];
+
+const sortByField = function (array, param) {
+  if (!param) return array;
+  // Ваш код здесь
+  return [...array].sort((a, b) => a[param].localeCompare(b[param]));
+};
+// console.log(sortByField(sortByFieldData, 'country'));
