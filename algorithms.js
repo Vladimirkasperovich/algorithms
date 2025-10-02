@@ -682,3 +682,37 @@ function flattenObj(arr) {
 // { id: 6 },
 // { id: 7 },
 // { id: 8 } ]
+
+// Напишите функцию, которая возвращает новый объект,
+// в котором все примитивные элементы вложенных объектов были рекурсивно "подняты"
+
+const obj = {
+  a: {
+    b: {
+      c: 1,
+      d: 2,
+      e: 3,
+    },
+    f: {
+      g: 4,
+      h: 5,
+    },
+    i: 6,
+    j: 7,
+  },
+};
+
+const flattenNestedObject = (obj) => {
+  // Ваш код здесь
+  let result = {};
+  for (const key in obj) {
+    if (typeof obj[key] !== 'object') {
+      result[key] = obj[key];
+    } else {
+      result = { ...result, ...flattenNestedObject(obj[key]) };
+    }
+  }
+  return result;
+};
+
+// console.log(flattenNestedObject(obj)); // { c: 1, d: 2, e: 3, g: 4, h: 5, i: 6, j: 7 }
