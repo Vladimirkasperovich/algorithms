@@ -856,7 +856,7 @@ const saveAdmin = (logger) => (admin) => {
 };
 
 const saveBook = (logger) => (book) => {
-  logger(`Saving admin with id ${book.id} `);
+  logger(`Saving book with id ${book.id} `);
 };
 
 const logger = (message) => {
@@ -864,8 +864,8 @@ const logger = (message) => {
   const time = [date.getHours(), date.getMinutes(), date.getSeconds()].join(
     ':',
   );
-  const prefix = message.includes('Saving user') ? 'USER' : 'LOG';
-  console.log(`${prefix} [${time}]: ${message}`);
+  const prefix = message.includes('user');
+  console.log(`${prefix ? `USER` : 'LOG'} [${time}]: ${message}`);
 };
 
 const main = () => {
@@ -879,8 +879,8 @@ const main = () => {
   adminSaver({
     id: '2',
   });
-  bookSaver({ id: 3 });
+  bookSaver({ id: '3' });
 };
 
 // Запуск
-main();
+// main();
