@@ -86,3 +86,16 @@ function serializeElementFrequencies(arr) {
 }
 
 // console.log(serializeElementFrequencies([1, 2, 3, 4, 4])); // {'1:1, 2:1, 3:1, 4:2'}
+
+// Реализовать функцию, которая будет принимать на вход массив чисел и всегда возвращать
+// массив этих же чисел, но каждый раз в рандомном порялке
+function shuffleArray(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// console.log(shuffleArray([1, 2, 3, 4, 5, 6, 7]));
