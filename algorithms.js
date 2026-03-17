@@ -28,3 +28,20 @@ const twoSum = (nums, target) => {
 // console.log(counter()); // 0
 // console.log(counter()); // 1
 // console.log(counter()); // 2
+
+// const createCounter = (init, step) => {
+//   let calls = 0;
+//   return () => {
+//     calls += 1;
+//     if (calls === 1) {
+//       return init;
+//     } else {
+//       return (init += step);
+//     }
+//   };
+// };
+// const counter = createCounter(10, 5);
+//
+// console.log(counter()); // 10
+// console.log(counter()); // 15
+// console.log(counter()); // 20
