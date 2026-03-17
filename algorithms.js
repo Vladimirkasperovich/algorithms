@@ -30,3 +30,21 @@ const createMemory = () => {
 // console.log(remember(1)); // [1]
 // console.log(remember(5)); // [1, 5]
 // console.log(remember(3)); // [1, 5, 3]
+
+const createCounter = (init) => {
+  let currentCount = init;
+  return {
+    increment: () => ++currentCount,
+    decrement: () => --currentCount,
+    reset: () => {
+      currentCount = init;
+      return currentCount;
+    },
+  };
+};
+const counter = createCounter(5);
+
+console.log(counter.increment()); // 6
+console.log(counter.increment()); // 7
+console.log(counter.decrement()); // 6
+console.log(counter.reset()); // 5
