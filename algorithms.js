@@ -17,31 +17,16 @@ const twoSum = (nums, target) => {
   }
   return [];
 };
-// console.log(twoSum([2, 7, 11, 15], 9)); //[0, 1]
-// console.log(twoSum([3, 2, 4], 6)); //[1, 2]
-// console.log(twoSum([3, 3], 6)); //[0, 1]
 
-// const createCounter = (n) => {
-//   return () => n++;
-// };
-// const counter = createCounter(0);
-// console.log(counter()); // 0
-// console.log(counter()); // 1
-// console.log(counter()); // 2
-
-// const createCounter = (init, step) => {
-//   let calls = 0;
-//   return () => {
-//     calls += 1;
-//     if (calls === 1) {
-//       return init;
-//     } else {
-//       return (init += step);
-//     }
-//   };
-// };
-// const counter = createCounter(10, 5);
+const createMemory = () => {
+  const arr = [];
+  return (val) => {
+    arr.push(val);
+    return arr;
+  };
+};
+// const remember = createMemory();
 //
-// console.log(counter()); // 10
-// console.log(counter()); // 15
-// console.log(counter()); // 20
+// console.log(remember(1)); // [1]
+// console.log(remember(5)); // [1, 5]
+// console.log(remember(3)); // [1, 5, 3]
