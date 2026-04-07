@@ -42,9 +42,41 @@ const createCounter = (init) => {
     },
   };
 };
-const counter = createCounter(5);
+// const counter = createCounter(5);
+//
+// console.log(counter.increment()); // 6
+// console.log(counter.increment()); // 7
+// console.log(counter.decrement()); // 6
+// console.log(counter.reset()); // 5
 
-console.log(counter.increment()); // 6
-console.log(counter.increment()); // 7
-console.log(counter.decrement()); // 6
-console.log(counter.reset()); // 5
+const orders = [
+  { customerId: 'A', amount: 100, status: 'completed' },
+  { customerId: 'B', amount: 200, status: 'completed' },
+  { customerId: 'A', amount: 50, status: 'completed' },
+  { customerId: 'C', amount: 300, status: 'pending' },
+  { customerId: 'B', amount: 50, status: 'pending' },
+];
+
+// функция должна вернуть массив customerId (в порядке убывания суммы всех заказов),
+// содержащий не более topN клиентов, у которых есть хотя бы один завершённый заказ
+function getTopCustomers(orders, topN) {
+  const map = {};
+
+  for (const order of orders) {
+    if (order.status !== 'completed') continue;
+    const key = order.customerId;
+
+    if (map[key]) {
+      map[key] += order.amount;
+    } else {
+      map[key] = order.amount;
+    }
+  }
+  return Object.entries(map)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, topN)
+    .map(([customerId]) => customerId);
+}
+
+// const result = getTopCustomers(orders, 2);
+// console.log(result);
