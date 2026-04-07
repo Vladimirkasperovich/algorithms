@@ -80,3 +80,27 @@ function getTopCustomers(orders, topN) {
 
 // const result = getTopCustomers(orders, 2);
 // console.log(result);
+const tree = {
+  value: 1,
+  children: [
+    {
+      value: 2,
+      children: [{ value: 3 }],
+    },
+    {
+      value: 4,
+      children: [{ value: 5 }, { value: 6 }],
+    },
+  ],
+};
+
+function getTreeValues(tree) {
+  const result = [tree.value];
+  if (!Array.isArray(tree.children)) return result;
+  for (const node of tree.children) {
+    result.push(...getTreeValues(node));
+  }
+  return result;
+}
+
+// console.log(getTreeValues(tree)); // -> [1, 2, 3, 4, 5, 6];
