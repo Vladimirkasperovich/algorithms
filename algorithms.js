@@ -129,3 +129,18 @@ function twoSum(arr, target) {
 // console.log(twoSum([3, 2, 4], 6)); // [1,2]
 // console.log(twoSum([3, 3], 6)); // [0,1]
 // console.log(twoSum([1, 5, 8, 2], 10)); // [2,3]
+
+/*
+ * Задача 6
+ * Напиши функцию, которая проверяет,
+ * является ли строка палиндромом.
+ *
+ * Игнорировать пробелы, регистр и спецсимволы.
+ */
+
+function isPalindrome(str) {}
+
+console.log(isPalindrome('A man, a plan, a canal: Panama')); // true
+console.log(isPalindrome('race a car')); // false
+console.log(isPalindrome('madam')); // true
+console.log(isPalindrome('No lemon, no melon')); // true
