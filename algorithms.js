@@ -55,3 +55,24 @@ function isAnagram(str1, str2) {
 // console.log(isAnagram('Astronomer', 'Moon starer')); // true
 // console.log(isAnagram('hello', 'world')); // false
 // console.log(isAnagram('Debit Card', 'Bad Credit')); // true
+
+/*
+ * Задача 3
+ * Дан массив чисел.
+ * Верни массив без дубликатов,
+ * сохранив порядок элементов.
+ */
+
+function uniqueArray(arr) {
+  if (!arr.length) return [];
+  const hashMap = new Map();
+  for (const item of arr) {
+    hashMap.set(item, (hashMap.get(item) || 0) + 1);
+  }
+  return [...hashMap.keys()];
+}
+
+// console.log(uniqueArray([1, 2, 2, 3, 1, 4])); // [1,2,3,4]
+// console.log(uniqueArray([5, 5, 5])); // [5]
+// console.log(uniqueArray([])); // []
+// console.log(uniqueArray([1, 2, 3])); // [1,2,3]
