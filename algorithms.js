@@ -76,3 +76,29 @@ function uniqueArray(arr) {
 // console.log(uniqueArray([5, 5, 5])); // [5]
 // console.log(uniqueArray([])); // []
 // console.log(uniqueArray([1, 2, 3])); // [1,2,3]
+
+/*
+ * Задача 4
+ * Напиши функцию, которая "схлопывает" строку.
+ *
+ * Пример:
+ * aaabbc -> a3b2c1
+ *
+ * Если строка пустая — вернуть пустую строку.
+ */
+
+function compressString(str) {
+  if (!str.length) return '';
+
+  const map = new Map();
+  for (const key of str) {
+    map.set(key, (map.get(key) || 0) + 1);
+  }
+
+  return [...map].map(([k, v]) => k + v).join('');
+}
+
+// console.log(compressString('aaabbc')); // 'a3b2c1'
+// console.log(compressString('abcd')); // 'a1b1c1d1'
+// console.log(compressString('')); // ''
+// console.log(compressString('wwwwaaadex')); // 'w4a3d1e1x1'
