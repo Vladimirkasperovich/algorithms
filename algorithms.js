@@ -102,3 +102,30 @@ function compressString(str) {
 // console.log(compressString('abcd')); // 'a1b1c1d1'
 // console.log(compressString('')); // ''
 // console.log(compressString('wwwwaaadex')); // 'w4a3d1e1x1'
+
+/*
+ * Задача 5
+ * Дан массив чисел и target.
+ * Нужно вернуть индексы двух чисел,
+ * сумма которых равна target.
+ *
+ * Гарантируется ровно одно решение.
+ */
+
+function twoSum(arr, target) {
+  const map = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    const diff = target - num;
+    if (map.has(diff)) {
+      return [map.get(diff), i];
+    }
+    map.set(num, i);
+  }
+  return null;
+}
+
+// console.log(twoSum([2, 7, 11, 15], 9)); // [0,1]
+// console.log(twoSum([3, 2, 4], 6)); // [1,2]
+// console.log(twoSum([3, 3], 6)); // [0,1]
+// console.log(twoSum([1, 5, 8, 2], 10)); // [2,3]
