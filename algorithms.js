@@ -209,3 +209,35 @@ function groupAnagrams(arr) {
 //
 // console.log(groupAnagrams(['', '']));
 // // [['', '']]
+
+/*
+ * Задача 4
+ * Реализуй flatten для массива.
+ *
+ * flatten([1,[2,[3]]])
+ * -> [1,2,3]
+ *
+ * Нельзя использовать flat().
+ */
+
+function flatten(arr) {
+  if (!arr.length) return [];
+  const result = [];
+  for (const arrElement of arr) {
+    if (Array.isArray(arrElement)) {
+      result.push(...flatten(arrElement));
+    } else {
+      result.push(arrElement);
+    }
+  }
+  return result;
+}
+
+// console.log(flatten([1, [2, [3, [4]]]]));
+// // [1,2,3,4]
+//
+// console.log(flatten([]));
+// // []
+//
+// console.log(flatten([1, [2], 3]));
+// // [1,2,3]
