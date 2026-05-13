@@ -147,3 +147,31 @@ function isPalindrome(str) {
 // console.log(isPalindrome('race a car')); // false
 // console.log(isPalindrome('madam')); // true
 // console.log(isPalindrome('No lemon, no melon')); // true
+
+/*
+ * Задача 8
+ * Реализуй функцию debounce.
+ *
+ * Функция должна вызываться
+ * только спустя delay мс после
+ * последнего вызова.
+ */
+
+function debounce(fn, delay) {
+  /* your code */
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
+// const log = debounce(() => {
+//   console.log('called');
+// }, 1000);
+//
+// log();
+// log();
+// log();
+// log();
+// 'called' должен вывестись один раз
