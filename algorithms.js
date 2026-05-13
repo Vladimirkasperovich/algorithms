@@ -175,3 +175,37 @@ function debounce(fn, delay) {
 // log();
 // log();
 // 'called' должен вывестись один раз
+
+/*
+ * Задача 1
+ * Дан массив строк.
+ * Нужно сгруппировать анаграммы.
+ *
+ * Порядок групп не важен.
+ */
+
+function groupAnagrams(arr) {
+  if (!arr.length) return [];
+  const map = new Map();
+  for (const word of arr) {
+    const key = word.toLowerCase().split('').sort().join('');
+    if (!map.has(key)) {
+      map.set(key, [word]);
+    } else {
+      map.get(key).push(word);
+    }
+  }
+  return [...map.values()];
+}
+
+// console.log(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']));
+// // [['eat','tea','ate'],['tan','nat'],['bat']]
+//
+// console.log(groupAnagrams(['abc']));
+// // [['abc']]
+//
+// console.log(groupAnagrams([]));
+// // []
+//
+// console.log(groupAnagrams(['', '']));
+// // [['', '']]
