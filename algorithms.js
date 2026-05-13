@@ -241,3 +241,45 @@ function flatten(arr) {
 //
 // console.log(flatten([1, [2], 3]));
 // // [1,2,3]
+
+/*
+ * Задача 5
+ * Дан массив строк.
+ * Нужно вернуть top K
+ * самых частых элементов.
+ *
+ * Если частота одинаковая —
+ * сортировать по алфавиту.
+ */
+
+function topKFrequent(words, k) {
+  const map = new Map();
+  for (const word of words) {
+    map.set(word, (map.get(word) || 0) + 1);
+  }
+  const sorted = [...map.entries()].sort((a, b) => {
+    if (a[1] === b[1]) {
+      return a[0].localeCompare(b[0]);
+    }
+    return b[1] - a[1];
+  });
+  const result = [];
+  for (let i = 0; i < k; i++) {
+    const word = sorted[i][0];
+    result.push(word);
+  }
+  return result;
+}
+
+// console.log(topKFrequent(['i', 'love', 'leetcode', 'i', 'love', 'coding'], 2));
+// // ['i','love']
+//
+// console.log(
+//   topKFrequent(
+//     ['the', 'day', 'is', 'sunny', 'the', 'the', 'the', 'sunny', 'is', 'is'],
+//     4,
+//   ),
+// );
+// // ['the','is','sunny','day']
+//
+// console.log(topKFrequent(['b', 'a', 'c'], 3));
