@@ -138,9 +138,12 @@ function twoSum(arr, target) {
  * Игнорировать пробелы, регистр и спецсимволы.
  */
 
-function isPalindrome(str) {}
+function isPalindrome(str) {
+  const cleaned = str.toLowerCase().replace(/[^a-zа-яё0-9]/g, '');
+  return cleaned === cleaned.split('').reverse().join('');
+}
 
-console.log(isPalindrome('A man, a plan, a canal: Panama')); // true
-console.log(isPalindrome('race a car')); // false
-console.log(isPalindrome('madam')); // true
-console.log(isPalindrome('No lemon, no melon')); // true
+// console.log(isPalindrome('A man, a plan, a canal: Panama')); // true
+// console.log(isPalindrome('race a car')); // false
+// console.log(isPalindrome('madam')); // true
+// console.log(isPalindrome('No lemon, no melon')); // true
