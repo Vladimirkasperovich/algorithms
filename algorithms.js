@@ -283,3 +283,42 @@ function topKFrequent(words, k) {
 // // ['the','is','sunny','day']
 //
 // console.log(topKFrequent(['b', 'a', 'c'], 3));
+
+/*
+ * Задача 6
+ * Реализуй deepClone.
+ *
+ * Нужно глубоко копировать:
+ * - объекты
+ * - массивы
+ *
+ * Без structuredClone.
+ */
+
+function deepClone(obj) {
+  const result = {};
+  if (Array.isArray(obj)) {
+    return obj.map(deepClone);
+  }
+  if (typeof obj === 'object' && obj !== null) {
+    for (const key in obj) {
+      result[key] = deepClone(obj[key]);
+    }
+  }
+
+  return result;
+}
+
+const original = {
+  a: 1,
+  b: {
+    c: 2,
+  },
+};
+
+// const cloned = deepClone(original);
+//
+// cloned.b.c = 999;
+//
+// console.log(original.b.c); // 2
+// console.log(cloned.b.c); // 999
