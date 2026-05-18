@@ -322,3 +322,24 @@ const original = {
 //
 // console.log(original.b.c); // 2
 // console.log(cloned.b.c); // 999
+
+/*
+ * Задача 7
+ * Найти второй по величине элемент массива.
+ *
+ * Если второго максимального нет — вернуть null.
+ */
+
+function secondLargest(arr) {
+  const set = new Set(arr);
+  if (set.size < 2) return null;
+  return [...set].sort((a, b) => b - a)[1];
+}
+
+// console.log(secondLargest([1, 2, 3, 4])); // 3
+// console.log(secondLargest([10, 10, 9])); // 9
+// console.log(secondLargest([5])); // null
+// console.log(secondLargest([7, 7, 7])); // null
+// console.log(secondLargest([-1, -5, -2])); // -2
+// console.log(secondLargest([])); // null
+// console.log(secondLargest([1, 2])); // 1
