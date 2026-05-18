@@ -343,3 +343,24 @@ function secondLargest(arr) {
 // console.log(secondLargest([-1, -5, -2])); // -2
 // console.log(secondLargest([])); // null
 // console.log(secondLargest([1, 2])); // 1
+
+/*
+ * Задача 8
+ * Проверить,
+ * является ли одна строка
+ * ротацией другой.
+ *
+ * waterbottle -> erbottlewat => true
+ */
+
+function isRotation(str1, str2) {
+  if (!str1.length || !str2.length) return true;
+}
+
+console.log(isRotation('waterbottle', 'erbottlewat')); // true
+console.log(isRotation('hello', 'llohe')); // true
+console.log(isRotation('hello', 'olelh')); // false
+console.log(isRotation('', '')); // true
+console.log(isRotation('a', 'a')); // true
+console.log(isRotation('abc', 'cab')); // true
+console.log(isRotation('abc', 'acb')); // false
