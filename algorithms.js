@@ -467,3 +467,26 @@ function flattenArr(arr) {
 // console.log(flattenArr([1, 2, 3])); // [1,2,3]
 // console.log(flattenArr([[[]]])); // []
 // console.log(flattenArr([1, [2], 3])); // [1,2,3]
+
+/*
+ * Задача 13
+ * Найти longest word.
+ */
+
+function longestWord(str) {
+  if (!str.length) return '';
+  const words = str.split(' ');
+  let longest = '';
+  for (const word of words) {
+    if (word.length > longest.length) {
+      longest = word;
+    }
+  }
+  return longest;
+}
+
+// console.log(longestWord('I love JavaScript')); // 'JavaScript'
+// console.log(longestWord('hello world')); // 'hello'
+// console.log(longestWord('')); // ''
+// console.log(longestWord('a ab abc')); // 'abc'
+// console.log(longestWord('one two three')); // 'three'
