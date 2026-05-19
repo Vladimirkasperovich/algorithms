@@ -395,7 +395,7 @@ function mostFrequent(arr) {
 // console.log(mostFrequent([])); // null
 
 /*
- * Задача 4
+ * Задача 10
  * Реализовать chunk.
  *
  * Разбить массив
@@ -416,3 +416,29 @@ function chunk(arr, size) {
 // console.log(chunk([], 2)); // []
 // console.log(chunk([1], 1)); // [[1]]
 // console.log(chunk([1, 2], 5)); // [[1,2]]
+
+/*
+ * Задача 11
+ * Найти все уникальные значения массива.
+ *
+ * Только те,
+ * которые встречаются один раз.
+ */
+
+function uniqueValues(arr) {
+  const count = new Map();
+  const uniques = [];
+  for (const elem of arr) {
+    count.set(elem, (count.get(elem) || 0) + 1);
+  }
+  for (const [key, value] of count) {
+    if (value === 1) uniques.push(key);
+  }
+  return uniques;
+}
+
+// console.log(uniqueValues([1, 2, 2, 3, 4, 4])); // [1,3]
+// console.log(uniqueValues([1, 1, 1])); // []
+// console.log(uniqueValues([])); // []
+// console.log(uniqueValues(['a', 'b', 'a', 'c'])); // ['b','c']
+// console.log(uniqueValues([true, false, true])); // [false]
