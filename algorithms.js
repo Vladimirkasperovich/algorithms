@@ -370,3 +370,26 @@ function firstRepeatedChar(str) {
 // console.log(firstRepeatedChar('aabb')); // 'a'
 // console.log(firstRepeatedChar('')); // null
 // console.log(firstRepeatedChar('abcdea')); // 'a'
+
+/*
+ * Задача 9
+ * Найти число,
+ * которое встречается чаще всего.
+ */
+
+function mostFrequent(arr) {
+  if (!arr.length) return null;
+  const map = new Map();
+  for (const item of arr) {
+    map.set(item, (map.get(item) || 0) + 1);
+  }
+  const max = Math.max(...map.values());
+  const entry = [...map].find(([_, value]) => value === max);
+  return entry ? entry[0] : null;
+}
+
+// console.log(mostFrequent([1, 2, 2, 3])); // 2
+// console.log(mostFrequent([1, 1, 2, 2, 2])); // 2
+// console.log(mostFrequent(['a', 'b', 'a'])); // 'a'
+// console.log(mostFrequent([5])); // 5
+// console.log(mostFrequent([])); // null
