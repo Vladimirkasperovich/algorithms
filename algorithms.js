@@ -442,3 +442,28 @@ function uniqueValues(arr) {
 // console.log(uniqueValues([])); // []
 // console.log(uniqueValues(['a', 'b', 'a', 'c'])); // ['b','c']
 // console.log(uniqueValues([true, false, true])); // [false]
+
+/*
+ * Задача 12
+ * Реализовать flatten.
+ *
+ * Без flat().
+ */
+
+function flattenArr(arr) {
+  const result = [];
+  for (const item of arr) {
+    if (Array.isArray(item)) {
+      result.push(...flattenArr(item));
+    } else {
+      result.push(item);
+    }
+  }
+  return result;
+}
+
+// console.log(flattenArr([1, [2, [3]]])); // [1,2,3]
+// console.log(flattenArr([])); // []
+// console.log(flattenArr([1, 2, 3])); // [1,2,3]
+// console.log(flattenArr([[[]]])); // []
+// console.log(flattenArr([1, [2], 3])); // [1,2,3]
