@@ -490,3 +490,32 @@ function longestWord(str) {
 // console.log(longestWord('')); // ''
 // console.log(longestWord('a ab abc')); // 'abc'
 // console.log(longestWord('one two three')); // 'three'
+
+/*
+ * Задача 14
+ * Проверить,
+ * сбалансированы ли скобки.
+ */
+
+function validParentheses(str) {
+  if (!str.length) return true;
+  const map = { '(': ')', '[': ']', '{': '}' };
+  const stack = [];
+  for (const bracket of str) {
+    if (map[bracket]) {
+      stack.push(bracket);
+    } else {
+      const last = stack.pop();
+      if (map[last] !== bracket) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
+}
+
+// console.log(validParentheses('()')); // true
+// console.log(validParentheses('(())')); // true
+// console.log(validParentheses('(()')); // false
+// console.log(validParentheses('())(')); // false
+// console.log(validParentheses('')); // true
