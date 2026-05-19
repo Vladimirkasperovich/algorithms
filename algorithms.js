@@ -346,21 +346,27 @@ function secondLargest(arr) {
 
 /*
  * Задача 8
- * Проверить,
- * является ли одна строка
- * ротацией другой.
+ * Найти первый повторяющийся символ.
  *
- * waterbottle -> erbottlewat => true
+ * Вернуть сам символ.
+ * Если нет — null.
  */
 
-function isRotation(str1, str2) {
-  if (!str1.length || !str2.length) return true;
+function firstRepeatedChar(str) {
+  if (!str.length) return null;
+  const seen = new Set();
+  for (const char of str) {
+    if (seen.has(char)) {
+      return char;
+    }
+    seen.add(char);
+  }
+
+  return null;
 }
 
-console.log(isRotation('waterbottle', 'erbottlewat')); // true
-console.log(isRotation('hello', 'llohe')); // true
-console.log(isRotation('hello', 'olelh')); // false
-console.log(isRotation('', '')); // true
-console.log(isRotation('a', 'a')); // true
-console.log(isRotation('abc', 'cab')); // true
-console.log(isRotation('abc', 'acb')); // false
+// console.log(firstRepeatedChar('abccba')); // 'c'
+// console.log(firstRepeatedChar('abcdef')); // null
+// console.log(firstRepeatedChar('aabb')); // 'a'
+// console.log(firstRepeatedChar('')); // null
+// console.log(firstRepeatedChar('abcdea')); // 'a'
