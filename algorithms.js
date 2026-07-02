@@ -519,3 +519,218 @@ function validParentheses(str) {
 // console.log(validParentheses('(()')); // false
 // console.log(validParentheses('())(')); // false
 // console.log(validParentheses('')); // true
+
+/*
+ * Задача 15
+ * Дан массив чисел.
+ *
+ * Нужно вернуть элемент,
+ * который встречается чаще всего.
+ *
+ * Если несколько элементов имеют
+ * одинаковую максимальную частоту —
+ * вернуть тот, который встретился раньше.
+ */
+
+function mostCommonNumber(arr) {
+  if (!arr.length) return null;
+  if (arr.length === 1) return arr[0];
+
+  const map = new Map();
+  for (const key of arr) {
+    map.set(key, (map.get(key) || 0) + 1);
+  }
+
+  const maxValue = Math.max(...map.values());
+  return map.entries().find(([_, value]) => value === maxValue)[0] ?? null;
+}
+
+// console.log(mostCommonNumber([1, 2, 2, 3])); // 2
+// console.log(mostCommonNumber([4, 4, 5, 5])); // 4
+// console.log(mostCommonNumber([7])); // 7
+// console.log(mostCommonNumber([])); // null
+
+/*
+ * Задача 16
+ *
+ * Напиши функцию,
+ * которая переворачивает
+ * порядок слов в предложении.
+ *
+ * Слова должны остаться целыми.
+ */
+
+function reverseSentenceWords(str) {
+  let arr = str.split(' ');
+  if (arr.length === 1) return arr[0];
+  const result = [];
+
+  for (let i = arr.length - 1; i >= 0; i--) {
+    result.push(arr[i]);
+  }
+
+  return result.join(' ');
+}
+
+// console.log(reverseSentenceWords('I love JavaScript'));
+// // 'JavaScript love I'
+//
+// console.log(reverseSentenceWords('Hello world'));
+// // 'world Hello'
+//
+// console.log(reverseSentenceWords('one'));
+// // 'one'
+
+/*
+ * Задача 17
+ *
+ * Дан массив чисел.
+ *
+ * Нужно вернуть true,
+ * если все элементы уникальны.
+ */
+
+function hasOnlyUniqueNumbers(arr) {
+  if (!arr.length || arr.length === 1) return true;
+  const set = new Set();
+  for (const item of arr) {
+    if (set.has(item)) return false;
+    set.add(item);
+  }
+
+  return true;
+}
+
+// console.log(hasOnlyUniqueNumbers([1, 2, 3])); // true
+// console.log(hasOnlyUniqueNumbers([1, 2, 2])); // false
+// console.log(hasOnlyUniqueNumbers([])); // true
+// console.log(hasOnlyUniqueNumbers([5])); // true
+
+/*
+ * Задача 18
+ *
+ * Напиши функцию,
+ * которая возвращает
+ * количество слов в строке.
+ *
+ * Лишние пробелы учитывать не нужно.
+ */
+
+function countWordsInString(str) {
+  return str.split(' ').filter((v) => v !== '').length;
+}
+
+console.log(countWordsInString('Hello world')); // 2
+console.log(countWordsInString('  I   love JS  ')); // 3
+console.log(countWordsInString('')); // 0
+console.log(countWordsInString('one')); // 1
+
+/*
+ * Задача 19
+ *
+ * Дан массив чисел.
+ *
+ * Вернуть новый массив,
+ * содержащий только четные числа.
+ */
+
+function filterEvenNumbers(arr) {}
+
+// console.log(filterEvenNumbers([1, 2, 3, 4])); // [2,4]
+// console.log(filterEvenNumbers([1, 3, 5])); // []
+// console.log(filterEvenNumbers([])); // []
+// console.log(filterEvenNumbers([8, 10])); // [8,10]
+
+/*
+ * Задача 20
+ *
+ * Напиши функцию,
+ * которая определяет,
+ * является ли одна строка
+ * циклическим сдвигом другой.
+ */
+
+function isShiftedString(str1, str2) {}
+
+// console.log(isShiftedString('abcde', 'cdeab')); // true
+// console.log(isShiftedString('water', 'terwa')); // true
+// console.log(isShiftedString('hello', 'llohe')); // true
+// console.log(isShiftedString('abc', 'acb')); // false
+
+/*
+ * Задача 21
+ *
+ * Дан массив чисел.
+ *
+ * Нужно вернуть сумму
+ * всех уникальных элементов.
+ *
+ * Уникальными считаются элементы,
+ * которые встретились ровно один раз.
+ */
+
+function sumUniqueNumbers(arr) {}
+
+// console.log(sumUniqueNumbers([1, 2, 2, 3])); // 4
+// console.log(sumUniqueNumbers([5, 5, 5])); // 0
+// console.log(sumUniqueNumbers([1, 2, 3])); // 6
+// console.log(sumUniqueNumbers([])); // 0
+
+/*
+ * Задача 22
+ *
+ * Напиши функцию,
+ * которая возвращает
+ * максимальную длину серии
+ * одинаковых подряд идущих символов.
+ */
+
+function longestSequence(str) {}
+
+// console.log(longestSequence('aaabbccccdaa')); // 4
+// console.log(longestSequence('abcd')); // 1
+// console.log(longestSequence('')); // 0
+// console.log(longestSequence('wwwwww')); // 6
+
+/*
+ * Задача 23
+ *
+ * Дан массив чисел.
+ *
+ * Нужно вернуть массив,
+ * отсортированный по частоте элементов.
+ *
+ * Чем чаще встречается число,
+ * тем раньше оно должно находиться.
+ */
+
+function sortByOccurrences(arr) {}
+
+// console.log(sortByOccurrences([1, 1, 2, 3, 3, 3]));
+// // [3,3,3,1,1,2]
+//
+// console.log(sortByOccurrences([4, 5, 5, 4, 4]));
+// // [4,4,4,5,5]
+//
+// console.log(sortByOccurrences([]));
+// // []
+
+/*
+ * Задача 24
+ *
+ * Напиши функцию,
+ * которая проверяет,
+ * являются ли две строки
+ * изоморфными.
+ *
+ * Каждый символ первой строки
+ * должен соответствовать только
+ * одному символу второй строки.
+ */
+
+function areIsomorphicStrings(str1, str2) {}
+
+// console.log(areIsomorphicStrings('egg', 'add')); // true
+// console.log(areIsomorphicStrings('foo', 'bar')); // false
+// console.log(areIsomorphicStrings('paper', 'title')); // true
+// console.log(areIsomorphicStrings('ab', 'aa')); // false
