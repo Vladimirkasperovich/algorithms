@@ -96,3 +96,101 @@ function groupByCategory(products) {
 //
 // console.log(groupByCategory([]));
 // // {}
+
+/**
+ * Задача: Two Sum
+ *
+ * Напиши функцию twoSum(nums, target).
+ *
+ * Функция принимает:
+ * - nums — массив чисел;
+ * - target — целевую сумму.
+ *
+ * Найди индексы двух разных элементов,
+ * сумма которых равна target.
+ *
+ * Верни массив из двух индексов.
+ * Если подходящей пары нет — верни null.
+ *
+ * Условия:
+ * - Не изменять исходный массив.
+ * - Нельзя использовать один элемент дважды.
+ * - Желательная временная сложность O(n).
+ */
+
+function twoSum(nums, target) {
+  // Твоё решение
+  const seen = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    const diff = target - num;
+    if (seen.has(diff)) {
+      return [seen.get(diff), i];
+    }
+    seen.set(num, i);
+  }
+  return null;
+}
+
+// Тест-кейсы
+// console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
+// console.log(twoSum([3, 2, 4], 6)); // [1, 2]
+// console.log(twoSum([3, 3], 6)); // [0, 1]
+// console.log(twoSum([1, 2, 3], 10)); // null
+// console.log(twoSum([], 5)); // null
+// console.log(twoSum([-3, 4, 3, 90], 0)); // [0, 2]
+
+/**
+ * Задача: Most Expensive Product
+ *
+ * Напиши функцию findMostExpensive(products).
+ *
+ * Функция принимает массив товаров.
+ * Каждый товар содержит:
+ * - id: number
+ * - name: string
+ * - price: number
+ *
+ * Нужно найти товар с самой высокой ценой
+ * и вернуть весь объект товара.
+ *
+ * Условия:
+ * - Не использовать sort().
+ * - Не изменять исходный массив.
+ * - Если массив пустой, вернуть null.
+ * - Если цены одинаковые, вернуть первый товар.
+ * - Желательная сложность O(n).
+ */
+
+function findMostExpensive(products) {
+  // Твоё решение
+  if (!products.length) return null;
+
+  let result = products[0];
+  for (const product of products) {
+    if (product.price > result.price) {
+      result = product;
+    }
+  }
+  return result;
+}
+
+// // Тест-кейсы
+// console.log(
+//   findMostExpensive([
+//     { id: 1, name: 'Rod', price: 150 },
+//     { id: 2, name: 'Reel', price: 300 },
+//     { id: 3, name: 'Hook', price: 20 },
+//   ]),
+// ); // { id: 2, name: "Reel", price: 300 }
+//
+// console.log(
+//   findMostExpensive([
+//     { id: 1, name: 'Rod', price: 200 },
+//     { id: 2, name: 'Reel', price: 200 },
+//   ]),
+// ); // { id: 1, name: "Rod", price: 200 }
+//
+// console.log(findMostExpensive([{ id: 1, name: 'Hook', price: 15 }])); // { id: 1, name: "Hook", price: 15 }
+//
+// console.log(findMostExpensive([])); // null
