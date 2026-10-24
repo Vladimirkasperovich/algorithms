@@ -107,36 +107,58 @@ function groupOrders(orders) {
 
 // ТЕСТЫ
 
-console.log(
-  groupOrders([
-    { userId: 1, amount: 100 },
-    { userId: 2, amount: 200 },
-    { userId: 1, amount: 50 },
-  ]),
-); // { 1: 150, 2: 200 }
+// console.log(
+//   groupOrders([
+//     { userId: 1, amount: 100 },
+//     { userId: 2, amount: 200 },
+//     { userId: 1, amount: 50 },
+//   ]),
+// ); // { 1: 150, 2: 200 }
+//
+// console.log(
+//   groupOrders([
+//     { userId: 3, amount: 10 },
+//     { userId: 3, amount: 20 },
+//     { userId: 3, amount: 30 },
+//   ]),
+// ); // { 3: 60 }
+//
+// console.log(groupOrders([])); // {}
+//
+// console.log(
+//   groupOrders([
+//     { userId: 1, amount: 0 },
+//     { userId: 2, amount: 75 },
+//   ]),
+// ); // { 1: 0, 2: 75 }
+//
+// console.log(
+//   groupOrders([
+//     { userId: 5, amount: 100 },
+//     { userId: 1, amount: 50 },
+//     { userId: 5, amount: -20 },
+//     { userId: 1, amount: 25 },
+//   ]),
+// ); // { 1: 75, 5: 80 }
 
-console.log(
-  groupOrders([
-    { userId: 3, amount: 10 },
-    { userId: 3, amount: 20 },
-    { userId: 3, amount: 30 },
-  ]),
-); // { 3: 60 }
+/*Напиши функцию findDuplicates, которая принимает массив чисел и возвращает массив чисел, встречающихся больше одного раза.*/
 
-console.log(groupOrders([])); // {}
+function findDuplicates(arr) {
+  const map = new Map();
+  arr.forEach((cur) => {
+    map.set(cur, (map.get(cur) || 0) + 1);
+  });
 
-console.log(
-  groupOrders([
-    { userId: 1, amount: 0 },
-    { userId: 2, amount: 75 },
-  ]),
-); // { 1: 0, 2: 75 }
+  return [...map.entries()]
+    .filter(([_, value]) => value > 1)
+    .map(([key]) => key);
+}
 
-console.log(
-  groupOrders([
-    { userId: 5, amount: 100 },
-    { userId: 1, amount: 50 },
-    { userId: 5, amount: -20 },
-    { userId: 1, amount: 25 },
-  ]),
-); // { 1: 75, 5: 80 }
+console.log(findDuplicates([1, 2, 3, 2, 4, 1, 5, 2]));
+// [1, 2]
+
+console.log(findDuplicates([1, 2, 3]));
+// []
+
+console.log(findDuplicates([5, 5, 5]));
+// [5]
